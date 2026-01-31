@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dh3b58d8c5lpa"]
 
 [ext_resource type="Script" uid="uid://ctl8tm4wvhmtt" path="res://level/police_check/popup.gd" id="1_bap7t"]
+[ext_resource type="Script" uid="uid://b3e5mg3j2yjek" path="res://level/police_check/police_check.gd" id="1_j20kk"]
 [ext_resource type="Resource" uid="uid://bk62b1vj1n57u" path="res://resource/resource_group/sound_answer_res_group.tres" id="2_psa0k"]
 
 [node name="PoliceCheck" type="Control" unique_id=940163699]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_j20kk")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2022749241]
 layout_mode = 1
