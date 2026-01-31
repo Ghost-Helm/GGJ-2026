@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelRes" format=3 uid="uid://cwdwmiee7o5s1"]
+
+[ext_resource type="Script" uid="uid://cdgv7pmctqdj6" path="res://resource/custom/level/level_res.gd" id="1_bi7x4"]
+[ext_resource type="PackedScene" uid="uid://dh3b58d8c5lpa" path="res://level/police_check/police_check.tscn" id="1_xqopi"]
+
+[resource]
+script = ExtResource("1_bi7x4")
+level_name = &"PoliceCheck"
+level_scene = ExtResource("1_xqopi")
+metadata/_custom_type_script = "uid://cdgv7pmctqdj6"
