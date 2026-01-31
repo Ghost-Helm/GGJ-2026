@@ -6,4 +6,5 @@
 script = ExtResource("1_vfh67")
 face_name = &"MouseB"
 type = 2
+dialog = "MouseB"
 metadata/_custom_type_script = "uid://bif667anywsjj"

@@ -6,4 +6,5 @@
 script = ExtResource("1_6dxmo")
 face_name = &"OtherA"
 type = 3
+dialog = "OtherA"
 metadata/_custom_type_script = "uid://bif667anywsjj"
