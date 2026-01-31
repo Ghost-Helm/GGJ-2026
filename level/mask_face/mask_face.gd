@@ -9,7 +9,7 @@ extends Control
 @onready var mask_list: VBoxContainer = $VBoxContainer/MaskStep/List
 
 
-var record_position_list: PackedVector2Array
+var record_position_list: PackedVector3Array
 
 @export var random_face_item_pic: Array[Texture2D]
 
@@ -34,19 +34,16 @@ func _add_texture(face_res: FaceRes) -> void:
     fall_scene.setup(face_res)
 
     current_fall_scene = fall_scene
+    current_face_res_type = face_res.type
     fall_scene.position.y = initial_height
     is_move = true
 
 var current_fall_scene: FallMask
+var current_face_res_type: FaceRes.FACE_TYPE
 var is_move: bool = false
 var is_fall: bool = false
 var is_mask: bool = false
 
-
-func mask_face_accept():
-    current_fall_scene.position.y += fall_speed
-    _current_second = fall_delta_second + 1
-    record_position_list.append(current_fall_scene.position)
 
 func _input(event: InputEvent) -> void:
     if not is_mask:
@@ -61,7 +58,7 @@ func _input(event: InputEvent) -> void:
             is_move = false
             is_fall = false
             _current_second = fall_delta_second + 1
-            record_position_list.append(current_fall_scene.position)
+            record_position_list.append(Vector3(current_face_res_type, current_fall_scene.position.x, current_fall_scene.position.y))
             is_mask = false
         #get_viewport().set_input_as_handled()
 
@@ -98,25 +95,15 @@ var cur_state: FaceRes.FACE_TYPE = FaceRes.FACE_TYPE.Eye
 func create_decor_show():
     var random_face_list = get_random_face_res(cur_state)
 
-<< << << < HEAD
     for old_face_item in decor_list.get_children():
         old_face_item.queue_free()
 
+    var id = 0
     for face_res in random_face_list:
         var face_tmp = face_item_btn.instantiate() as FaceItemBtn
         decor_list.add_child(face_tmp)
-        face_tmp.setup(face_res)
-== == == =
-	for old_face_item in decor_list.get_children():
-		old_face_item.queue_free()
-
-	var id = 0
-	for face_res in random_face_list:
-		var face_tmp = face_item_btn.instantiate() as FaceItemBtn
-		decor_list.add_child(face_tmp)
-		face_tmp.setup(face_res, random_face_item_pic[id], id)
-		id += 1
->> >> >> > ace865edd9f7fa3200f9e795549f8618c96cf445
+        face_tmp.setup(face_res, random_face_item_pic[id], id)
+        id += 1
 
         face_tmp.pressed.connect(on_face_pressed.bind(face_res))
 
@@ -128,29 +115,16 @@ func on_face_pressed(face_res: FaceRes):
 
 
 func get_random_face_res(type: FaceRes.FACE_TYPE) -> Array[FaceRes]:
-<< << << < HEAD
     var target_list: Array[FaceRes]
     match type:
-        FaceRes.FACE_TYPE.HairCut:
-            target_list = _hair_cut_list
+        FaceRes.FACE_TYPE.Eye:
+            target_list = _eye_list
         FaceRes.FACE_TYPE.Eyebrow:
             target_list = _eyebrow_list
         FaceRes.FACE_TYPE.Mouse:
             target_list = _mouse_list
         FaceRes.FACE_TYPE.Other:
             target_list = _other_list
-== == == =
-	var target_list: Array[FaceRes]
-	match type:
-		FaceRes.FACE_TYPE.Eye:
-			target_list = _eye_list
-		FaceRes.FACE_TYPE.Eyebrow:
-			target_list = _eyebrow_list
-		FaceRes.FACE_TYPE.Mouse:
-			target_list = _mouse_list
-		FaceRes.FACE_TYPE.Other:
-			target_list = _other_list
->> >> >> > ace865edd9f7fa3200f9e795549f8618c96cf445
 
     var current_result: Array[FaceRes] = []
     var is_duplicate: bool = true
@@ -193,25 +167,27 @@ func get_random_face_res(type: FaceRes.FACE_TYPE) -> Array[FaceRes]:
 func _ready() -> void:
     for face_res in face_res_group.load_all():
         match face_res.type:
-            FaceRes.FACE_TYPE.HairCut:
-                _hair_cut_list.append(face_res)
+            FaceRes.FACE_TYPE.Eye:
+                _eye_list.append(face_res)
             FaceRes.FACE_TYPE.Eyebrow:
                 _eyebrow_list.append(face_res)
+            FaceRes.FACE_TYPE.Nose:
+                _nose_list.append(face_res)
             FaceRes.FACE_TYPE.Mouse:
                 _mouse_list.append(face_res)
             FaceRes.FACE_TYPE.Other:
                 _other_list.append(face_res)
 
     mask_step = {
-        FaceRes.FACE_TYPE.HairCut: mask_hair_btn,
-        FaceRes.FACE_TYPE.Eyebrow: mask_eye_btn,
+        FaceRes.FACE_TYPE.Eye: mask_eye_btn,
+        FaceRes.FACE_TYPE.Eyebrow: mask_eye_brow_btn,
+        FaceRes.FACE_TYPE.Nose: mask_nose_btn,
         FaceRes.FACE_TYPE.Mouse: mask_mouse_btn,
         FaceRes.FACE_TYPE.Other: mask_other_btn,
     }
     create_decor_show()
-    var cur_button = mask_step[cur_state] as Button
-    cur_button.disabled = false
-    cur_button.button_pressed = true
+    var cur_button = mask_step[cur_state] as MaskStepBtn
+    cur_button.set_select(true)
 
     create_decor_show()
 
@@ -229,25 +205,14 @@ func _on_confirm_pressed() -> void:
         Save.save_position_data(record_position_list)
         Save.save_image(get_viewport().get_texture().get_image())
 
-<< << << < HEAD
         Events.emit_signal("request_change_level", "Passport")
     else:
         cur_state += 1
+        for mask_type_item: MaskStepBtn in mask_list.get_children():
+            mask_type_item.set_select(false)
         create_decor_show()
         var cur_button = mask_step[cur_state] as Button
-        cur_button.disabled = false
-        cur_button.button_pressed = true
-== == == =
-		Events.emit_signal("request_change_level", "Passport")
-	else:
-		cur_state += 1
-		for mask_type_item: MaskStepBtn in mask_list.get_children():
-			mask_type_item.set_select(false)
-		create_decor_show()
-		var cur_button = mask_step[cur_state] as Button
-		cur_button.set_select(true)
-
->> >> >> > ace865edd9f7fa3200f9e795549f8618c96cf445
+        cur_button.set_select(true)
 
 
 func _on_random_pressed() -> void:

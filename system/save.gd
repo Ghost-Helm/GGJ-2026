@@ -1,10 +1,10 @@
 extends Node
 
-var position_data: PackedVector2Array
+var position_data: PackedVector3Array
 var image: Image
 
 
-func save_position_data(data: PackedVector2Array) -> void:
+func save_position_data(data: PackedVector3Array) -> void:
     position_data = data
 
 
@@ -16,7 +16,7 @@ func save_image(target_image: Image) -> void:
     image = cut_image
     
     
-func get_position_data() -> PackedVector2Array:
+func get_position_data() -> PackedVector3Array:
     return position_data
 
 func get_image() -> Image:
