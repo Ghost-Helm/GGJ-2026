@@ -1,6 +1,9 @@
 extends Control
 
 
+func _ready() -> void:
+	Events.emit_signal("request_play_music", "StartBgm")
+
 
 func _on_start_game_pressed() -> void:
 	Events.emit_signal("request_change_level", "PreStory")

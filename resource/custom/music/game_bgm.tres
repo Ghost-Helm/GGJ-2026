@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MusicRes" format=3 uid="uid://c4my1vmukl3av"]
+
+[ext_resource type="Script" uid="uid://b8e3l6kvgvq8n" path="res://resource/custom/music/music_res.gd" id="1_drq6d"]
+[ext_resource type="AudioStream" uid="uid://cokm8pkuob2w" path="res://asset/music/game_bgm.mp3" id="2_qt62t"]
+
+[resource]
+script = ExtResource("1_drq6d")
+music_name = &"GameBgm"
+stream = ExtResource("2_qt62t")
+metadata/_custom_type_script = "uid://b8e3l6kvgvq8n"
