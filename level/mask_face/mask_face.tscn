@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c66rf0vuum76c" path="res://level/mask_face/mask_face.gd" id="1_xi0d6"]
 [ext_resource type="PackedScene" uid="uid://dtj34ww4fsus8" path="res://level/mask_face/face_item_btn.tscn" id="2_g51uk"]
 [ext_resource type="Resource" uid="uid://nuhe2m40oooy" path="res://resource/resource_group/face_res_group.tres" id="3_rprlw"]
+[ext_resource type="PackedScene" uid="uid://cv5ropeuetciu" path="res://level/mask_face/fall_texture.tscn" id="4_kykf2"]
 
 [node name="MaskFace" type="Control" unique_id=521831287]
 layout_mode = 3
@@ -14,6 +15,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xi0d6")
 face_item_btn = ExtResource("2_g51uk")
+fall_texture = ExtResource("4_kykf2")
+fall_speed = 1.0
 face_res_group = ExtResource("3_rprlw")
 target_count = 3
 
