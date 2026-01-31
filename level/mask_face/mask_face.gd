@@ -4,8 +4,6 @@ extends Control
 @onready var decor_list: VBoxContainer = $MarginContainer/HBoxContainer/HBoxContainer/Decor/DecorList
 @export var face_item_btn: PackedScene
 
-
-
 @export var face_res_group: ResourceGroup
 @export var target_count: int
 
@@ -17,9 +15,15 @@ var _other_list: Array[FaceRes]
 var _last_result: Array[FaceRes]
 
 ## 当前的装扮进度
-var cur_state: FaceRes.FACE_TYPE = FaceRes.FACE_TYPE.Eyebrow
+var cur_state: FaceRes.FACE_TYPE = FaceRes.FACE_TYPE.HairCut
 
-
+## 装扮的顺序
+var mask_step: Array[FaceRes.FACE_TYPE] = [
+	FaceRes.FACE_TYPE.HairCut,
+	FaceRes.FACE_TYPE.Eyebrow,
+	FaceRes.FACE_TYPE.Mouse,
+	FaceRes.FACE_TYPE.Other,
+]
 
 ## 在DecorList中生成
 func create_decor_show():
@@ -32,9 +36,6 @@ func create_decor_show():
 		var face_tmp = face_item_btn.instantiate() as FaceItemBtn
 		decor_list.add_child(face_tmp)
 		face_tmp.setup(face_res)
-
-
-
 
 func get_random_face_res(type: FaceRes.FACE_TYPE) -> Array[FaceRes]:
 	var target_list: Array[FaceRes]
