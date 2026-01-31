@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dv15onsgc5b0x"]
+
+[ext_resource type="Script" uid="uid://b48usimgookl8" path="res://system/world.gd" id="1_7am6p"]
+[ext_resource type="Resource" uid="uid://dsga0k0p5vcnv" path="res://resource/resource_group/level_res_group.tres" id="2_gisfo"]
+
+[node name="Main" type="Node" unique_id=2012366658]
+
+[node name="World" type="Node" parent="." unique_id=2063269904]
+script = ExtResource("1_7am6p")
+level_res_resource_group = ExtResource("2_gisfo")
+
+[node name="Audio" type="Node" parent="." unique_id=1519354822]
