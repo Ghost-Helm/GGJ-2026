@@ -22,16 +22,16 @@ var record_position_list: PackedVector2Array
 
 var _current_second: float
 
-func _add_texture(texture: Texture2D) -> void:
-	var fall_scene: TextureRect = fall_texture.instantiate()
+func _add_texture(face_res:FaceRes) -> void:
+	var fall_scene: FallMask = fall_texture.instantiate()
 	face_item.add_child(fall_scene)
-	fall_scene.texture = GradientTexture2D.new() # TODO: texture
+	fall_scene.setup(face_res)
 
 	current_fall_scene = fall_scene
 	fall_scene.position.y = initial_height
 	is_move = true
 
-var current_fall_scene: TextureRect
+var current_fall_scene: FallMask
 var is_move: bool = false
 var is_fall: bool = false
 var is_mask: bool = false
@@ -54,7 +54,6 @@ func _input(event: InputEvent) -> void:
 		if is_move == false && is_fall == true:
 			is_move = false
 			is_fall = false
-			current_fall_scene.position.y += fall_speed
 			_current_second = fall_delta_second + 1
 			record_position_list.append(current_fall_scene.position)
 			is_mask = false
@@ -100,13 +99,12 @@ func create_decor_show():
 		decor_list.add_child(face_tmp)
 		face_tmp.setup(face_res)
 
-		#face_tmp.connect("button_up", _add_texture.bind(face_res.face_img))
-		face_tmp.pressed.connect(on_face_pressed.bind(face_res.face_img))
+		face_tmp.pressed.connect(on_face_pressed.bind(face_res))
 
-func on_face_pressed(face_img:Texture2D):
+func on_face_pressed(face_res:FaceRes):
 	if is_mask:
 		return
-	_add_texture(face_img)
+	_add_texture(face_res)
 	is_mask = true
 	
 
