@@ -213,18 +213,12 @@ func _on_confirm_pressed() -> void:
         Events.emit_signal("request_change_level", "Passport")
     else:
         cur_state += 1
-<< << << < HEAD
-        for mask_type_item: MaskStepBtn in mask_list.get_children():
-== == == =
         update_title_icon()
         for mask_type_item: MaskStepBtn in mask_list.get_children():
->> >> >> > aca21142098ed39e4e1fa14ff6d61a7364a6cc63
             mask_type_item.set_select(false)
         create_decor_show()
         var cur_button = mask_step[cur_state] as Button
         cur_button.set_select(true)
-<< << << < HEAD
-== == == =
 
 func update_title_icon():
     for child in title_icon.get_children():
@@ -232,7 +226,6 @@ func update_title_icon():
     var icon_tmp = TextureRect.new()
     icon_tmp.texture = title_icon_list[cur_state]
     title_icon.add_child(icon_tmp)
->> >> >> > aca21142098ed39e4e1fa14ff6d61a7364a6cc63
 
 
 func _on_random_pressed() -> void:
