@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FaceRes" format=3 uid="uid://dy753werwrtmp"]
+
+[ext_resource type="Script" uid="uid://bif667anywsjj" path="res://resource/custom/face/face_res.gd" id="1_gfn8h"]
+
+[resource]
+script = ExtResource("1_gfn8h")
+face_name = &"EyeB"
+type = 1
+metadata/_custom_type_script = "uid://bif667anywsjj"

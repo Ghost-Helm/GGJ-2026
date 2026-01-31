@@ -6,5 +6,5 @@
 script = ExtResource("1_md6r0")
 base_folder = "res://resource/custom/face"
 includes = Array[String](["*.tres"])
-paths = Array[String](["res://resource/custom/face/eye_a.tres"])
+paths = Array[String](["res://resource/custom/face/eye_a.tres", "res://resource/custom/face/eye_b.tres", "res://resource/custom/face/eye_c.tres", "res://resource/custom/face/mouse_a.tres", "res://resource/custom/face/mouse_b.tres", "res://resource/custom/face/nose_a.tres", "res://resource/custom/face/nose_b.tres", "res://resource/custom/face/other_a.tres"])
 metadata/_custom_type_script = "uid://fulb7hvwdkex"
