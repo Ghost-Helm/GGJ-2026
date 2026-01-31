@@ -16,6 +16,10 @@ config/use_custom_user_dir=true
 config/custom_user_dir_name="GGJ2026"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
+[audio]
+
+buses/default_bus_layout="uid://cge03cov6wu2k"
+
 [autoload]
 
 Events="*uid://bylqsmlv445q1"

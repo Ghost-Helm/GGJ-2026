@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ResourceGroup" format=3 uid="uid://defredw2wcl6a"]
+
+[ext_resource type="Script" uid="uid://fulb7hvwdkex" path="res://addons/godot_resource_groups/resource_group.gd" id="1_evsh6"]
+
+[resource]
+script = ExtResource("1_evsh6")
+base_folder = "res://resource/custom/music"
+includes = Array[String](["*.tres"])
+metadata/_custom_type_script = "uid://fulb7hvwdkex"
