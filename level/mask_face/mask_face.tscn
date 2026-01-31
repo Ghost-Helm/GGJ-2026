@@ -76,7 +76,15 @@ grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.32544088, 0.3254409, 0.32544088, 1)
 
-[node name="Decor" type="Control" parent="MarginContainer/HBoxContainer/People/Face" unique_id=1316933647]
+[node name="Photo" type="ColorRect" parent="MarginContainer/HBoxContainer/People/Face" unique_id=81961247]
+layout_mode = 1
+offset_left = -18.0
+offset_top = -31.0
+offset_right = 134.0
+offset_bottom = 167.0
+color = Color(0.24477637, 0.2447764, 0.24477637, 1)
+
+[node name="FaceItem" type="Control" parent="MarginContainer/HBoxContainer/People/Face" unique_id=1316933647]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -121,14 +129,6 @@ grow_vertical = 2
 text = "巴拉巴拉巴拉"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Photo" type="ColorRect" parent="MarginContainer/HBoxContainer/People" unique_id=81961247]
-layout_mode = 1
-offset_left = -18.0
-offset_top = -21.0
-offset_right = 134.0
-offset_bottom = 177.0
-color = Color(0.24477637, 0.2447764, 0.24477637, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1792498008]
 layout_mode = 2
