@@ -20,6 +20,10 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 Events="*uid://bylqsmlv445q1"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=1920
