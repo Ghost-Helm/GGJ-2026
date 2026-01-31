@@ -1,8 +1,4 @@
 extends Control
-@onready var start_game: Button = $CanvasLayer/Control/MarginContainer/VBoxContainer/StartGame
-@onready var about_us: Button = $CanvasLayer/Control/MarginContainer/VBoxContainer/AboutUs
-@onready var exit_game: Button = $CanvasLayer/Control/MarginContainer/VBoxContainer/ExitGame
-
 
 
 
