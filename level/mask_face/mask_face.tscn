@@ -22,10 +22,14 @@
 [ext_resource type="Texture2D" uid="uid://c6du04qd45ohi" path="res://asset/mask_face_ui/random.png" id="14_828kl"]
 [ext_resource type="Texture2D" uid="uid://dmkteyduwkjqi" path="res://asset/mask_face_ui/nose_icon.png" id="14_x0liv"]
 [ext_resource type="Texture2D" uid="uid://cjhp0kvj3c2vh" path="res://asset/mask_face_ui/other_icon.png" id="15_4wuom"]
+[ext_resource type="Texture2D" uid="uid://btini0d8xnqwh" path="res://asset/mask_face_ui/eyebrow_title.png" id="15_8u8eg"]
 [ext_resource type="Texture2D" uid="uid://df7cyhxp1oytx" path="res://asset/mask_face_ui/eyebrow_do.png" id="15_h522x"]
 [ext_resource type="Texture2D" uid="uid://176xqbi3ltbn" path="res://asset/mask_face_ui/nose_do.png" id="17_2ongo"]
+[ext_resource type="Texture2D" uid="uid://c84w45jwdwj61" path="res://asset/mask_face_ui/nose_title.png" id="17_4uala"]
 [ext_resource type="Texture2D" uid="uid://mwwved4wlbm1" path="res://asset/mask_face_ui/mouse_icon.png" id="18_h522x"]
+[ext_resource type="Texture2D" uid="uid://to8mrfnwig5c" path="res://asset/mask_face_ui/mouse_title.png" id="19_2ongo"]
 [ext_resource type="Texture2D" uid="uid://cfpj4waoirbxu" path="res://asset/mask_face_ui/mouse_do.png" id="19_bwv2a"]
+[ext_resource type="Texture2D" uid="uid://t24g1w1ipnyh" path="res://asset/mask_face_ui/other_title.png" id="21_bwv2a"]
 [ext_resource type="Texture2D" uid="uid://cqnh3cy7767qh" path="res://asset/mask_face_ui/other_do.png" id="21_f784x"]
 
 [node name="MaskFace" type="Control" unique_id=521831287]
@@ -36,11 +40,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xi0d6")
+title_icon_list = Array[Texture2D]([ExtResource("13_3l53b"), ExtResource("15_8u8eg"), ExtResource("17_4uala"), ExtResource("19_2ongo"), ExtResource("21_bwv2a")])
 random_face_item_pic = Array[Texture2D]([ExtResource("2_acfhl"), ExtResource("3_p2w7j"), ExtResource("4_stu2h")])
 face_item_btn = ExtResource("2_g51uk")
 fall_texture = ExtResource("3_kykf2")
-fall_speed = 100.0
-fall_delta_second = 1.0
+fall_speed = 20.0
+fall_delta_second = 0.1
 face_res_group = ExtResource("3_rprlw")
 target_count = 3
 
@@ -296,14 +301,26 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("12_3e65y")
 
-[node name="TitleIcon" type="TextureRect" parent="Decor" unique_id=2001252623]
+[node name="TitleIcon" type="Control" parent="Decor" unique_id=778982502]
 layout_mode = 1
-offset_left = 21.0
-offset_top = 34.0
-offset_right = 133.0
-offset_bottom = 90.0
-scale = Vector2(1.2, 1.2)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -532.0
+offset_right = -208.0
+offset_bottom = -532.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="Decor/TitleIcon" unique_id=2001252623]
+layout_mode = 1
+offset_right = 76.0
+offset_bottom = 94.0
 texture = ExtResource("13_3l53b")
+stretch_mode = 2
 
 [node name="DecorList" type="VBoxContainer" parent="Decor" unique_id=1251056749]
 custom_minimum_size = Vector2(0, 800)

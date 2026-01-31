@@ -8,6 +8,9 @@ extends Control
 
 @onready var mask_list: VBoxContainer = $VBoxContainer/MaskStep/List
 
+@export var title_icon_list: Array[Texture2D]
+@onready var title_icon: Control = $Decor/TitleIcon
+
 
 var record_position_list: PackedVector3Array
 
@@ -24,6 +27,7 @@ var record_position_list: PackedVector3Array
 @export var limit_left: float
 @export var limit_right: float
 @export var fall_speed: float
+var fall_speed_tmp: float
 @export var fall_delta_second: float
 
 var _current_second: float
@@ -37,6 +41,9 @@ func _add_texture(face_res: FaceRes) -> void:
     current_face_res_type = face_res.type
     fall_scene.position.y = initial_height
     is_move = true
+
+    fall_speed_tmp = fall_speed + randi_range(0, 20)
+
 
 var current_fall_scene: FallMask
 var current_face_res_type: FaceRes.FACE_TYPE
@@ -71,7 +78,7 @@ func _physics_process(delta: float) -> void:
         var target_position_x: float = clampf(mouse_position.x, left_limit, right_limit)
         current_fall_scene.position.x = target_position_x
     elif is_fall && _current_second > fall_delta_second:
-        current_fall_scene.position.y += fall_speed
+        current_fall_scene.position.y += fall_speed_tmp
         _current_second = 0
     _current_second += delta
 
@@ -104,7 +111,6 @@ func create_decor_show():
         decor_list.add_child(face_tmp)
         face_tmp.setup(face_res, random_face_item_pic[id], id)
         id += 1
-
         face_tmp.pressed.connect(on_face_pressed.bind(face_res))
 
 func on_face_pressed(face_res: FaceRes):
@@ -121,6 +127,8 @@ func get_random_face_res(type: FaceRes.FACE_TYPE) -> Array[FaceRes]:
             target_list = _eye_list
         FaceRes.FACE_TYPE.Eyebrow:
             target_list = _eyebrow_list
+        FaceRes.FACE_TYPE.Nose:
+            target_list = _nose_list
         FaceRes.FACE_TYPE.Mouse:
             target_list = _mouse_list
         FaceRes.FACE_TYPE.Other:
@@ -198,9 +206,6 @@ func _ready() -> void:
 
 func _on_confirm_pressed() -> void:
     if cur_state == FaceRes.FACE_TYPE.size() - 1:
-        photo.visible = false
-        dialog.visible = false
-
         await RenderingServer.frame_post_draw
         Save.save_position_data(record_position_list)
         Save.save_image(get_viewport().get_texture().get_image())
@@ -208,11 +213,26 @@ func _on_confirm_pressed() -> void:
         Events.emit_signal("request_change_level", "Passport")
     else:
         cur_state += 1
+<< << << < HEAD
         for mask_type_item: MaskStepBtn in mask_list.get_children():
+== == == =
+        update_title_icon()
+        for mask_type_item: MaskStepBtn in mask_list.get_children():
+>> >> >> > aca21142098ed39e4e1fa14ff6d61a7364a6cc63
             mask_type_item.set_select(false)
         create_decor_show()
         var cur_button = mask_step[cur_state] as Button
         cur_button.set_select(true)
+<< << << < HEAD
+== == == =
+
+func update_title_icon():
+    for child in title_icon.get_children():
+        child.queue_free()
+    var icon_tmp = TextureRect.new()
+    icon_tmp.texture = title_icon_list[cur_state]
+    title_icon.add_child(icon_tmp)
+>> >> >> > aca21142098ed39e4e1fa14ff6d61a7364a6cc63
 
 
 func _on_random_pressed() -> void:

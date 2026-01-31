@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FaceRes" format=3 uid="uid://dg36sje7xeiks"]
+
+[ext_resource type="Texture2D" uid="uid://bfey103rmlik8" path="res://asset/mouse/mouse_4.png" id="1_3khst"]
+[ext_resource type="Script" uid="uid://bif667anywsjj" path="res://resource/custom/face/face_res.gd" id="1_moc5a"]
+
+[resource]
+script = ExtResource("1_moc5a")
+face_name = &"Mouse4"
+face_img = ExtResource("1_3khst")
+type = 3
+metadata/_custom_type_script = "uid://bif667anywsjj"
