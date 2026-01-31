@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://bc1mj41yhkmn2"]
 
 [ext_resource type="Script" uid="uid://gtk2qo81gafj" path="res://system/audio.gd" id="1_h0pyd"]
+[ext_resource type="Resource" uid="uid://defredw2wcl6a" path="res://resource/resource_group/music_res_group.tres" id="2_fe12c"]
+[ext_resource type="Resource" uid="uid://dbnfmtkg52qcy" path="res://resource/resource_group/sound_res_group.tres" id="3_4mvf6"]
 
-[node name="Audio" type="Node" unique_id=1553434932]
+[node name="Audio" type="Node" unique_id=1553434932 node_paths=PackedStringArray("music_player", "sound_player")]
 script = ExtResource("1_h0pyd")
+music_res_group = ExtResource("2_fe12c")
+sound_res_group = ExtResource("3_4mvf6")
+music_player = NodePath("MusicPlayer")
+sound_player = NodePath("SoundPlayer")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1292671295]
 bus = &"Music"
