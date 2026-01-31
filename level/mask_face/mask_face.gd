@@ -15,7 +15,7 @@ func _add_texture(texture: Texture2D) -> void:
     var fall_scene: TextureRect = fall_texture.instantiate()
     face_item.add_child(fall_scene)
     fall_scene.texture = GradientTexture2D.new() # TODO: texture
-    
+
     current_fall_scene = fall_scene
     is_move = true
 
@@ -35,7 +35,6 @@ func _physics_process(delta: float) -> void:
         pass
 
 
-
 @export var face_res_group: ResourceGroup
 @export var target_count: int
 
@@ -47,8 +46,7 @@ var _other_list: Array[FaceRes]
 var _last_result: Array[FaceRes]
 
 ## 当前的装扮进度
-var cur_state: FaceRes.FACE_TYPE = FaceRes.FACE_TYPE.Eyebrow
-
+var cur_state: FaceRes.FACE_TYPE = FaceRes.FACE_TYPE.HairCut
 
 ## 在DecorList中生成
 func create_decor_show():
