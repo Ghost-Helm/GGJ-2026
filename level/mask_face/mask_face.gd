@@ -9,6 +9,7 @@ extends Control
 @export var initial_height: float
 @export var limit_left: float
 @export var limit_right: float
+@export var fall_speed: float
 
 
 func _add_texture(texture: Texture2D) -> void:
@@ -16,23 +17,35 @@ func _add_texture(texture: Texture2D) -> void:
 	face_item.add_child(fall_scene)
 	fall_scene.texture = GradientTexture2D.new() # TODO: texture
 
-	current_fall_scene = fall_scene
-	is_move = true
+    current_fall_scene = fall_scene
+    fall_scene.position.y = initial_height
+    is_move = true
 
 var current_fall_scene: TextureRect
 var is_move: bool = false
 var is_fall: bool = false
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	pass
+func _input(event: InputEvent) -> void:
+    if event.is_action_pressed("mask_face_fall") && is_move == true && is_fall == false:
+        is_move = false
+        is_fall = true
+    if event.is_action_pressed("mask_face_accept") && is_move == false && is_fall == true:
+        is_move = false
+        is_fall = false
+
+    get_viewport().handle_input_locally
 
 
-func _physics_process(delta: float) -> void:
-	if is_move:
-		var mouse_position: Vector2 = face_item.get_local_mouse_position()
-	elif is_fall:
-		pass
+func _physics_process(_delta: float) -> void:
+    if is_move:
+        var mouse_position: Vector2 = face_item.get_local_mouse_position()
+        var left_limit: float = limit_left
+        var right_limit: float = face_item.size.x - limit_right
+        var target_position_x: float = clampf(mouse_position.x, left_limit, right_limit)
+        current_fall_scene.position.x = target_position_x
+    elif is_fall:
+        current_fall_scene.position.y += fall_speed
 
 
 @export var face_res_group: ResourceGroup
@@ -46,7 +59,7 @@ var _other_list: Array[FaceRes]
 var _last_result: Array[FaceRes]
 
 ## 当前的装扮进度
-var cur_state: FaceRes.FACE_TYPE = FaceRes.FACE_TYPE.HairCut
+var cur_state: FaceRes.FACE_TYPE = FaceRes.FACE_TYPE.Eyebrow
 
 ## 在DecorList中生成
 func create_decor_show():
@@ -60,7 +73,7 @@ func create_decor_show():
 		decor_list.add_child(face_tmp)
 		face_tmp.setup(face_res)
 
-		face_tmp.connect("pressed", _add_texture.bind(face_res.face_img))
+        face_tmp.connect("button_up", _add_texture.bind(face_res.face_img))
 
 
 func get_random_face_res(type: FaceRes.FACE_TYPE) -> Array[FaceRes]:
