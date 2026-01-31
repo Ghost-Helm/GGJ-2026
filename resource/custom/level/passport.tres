@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelRes" format=3 uid="uid://dp63622u6xkdr"]
+
+[ext_resource type="Script" uid="uid://cdgv7pmctqdj6" path="res://resource/custom/level/level_res.gd" id="1_d6lm4"]
+[ext_resource type="PackedScene" uid="uid://bxtul2pcrhsfy" path="res://level/passport/passport.tscn" id="1_omar7"]
+
+[resource]
+script = ExtResource("1_d6lm4")
+level_name = &"Passport"
+level_scene = ExtResource("1_omar7")
+metadata/_custom_type_script = "uid://cdgv7pmctqdj6"

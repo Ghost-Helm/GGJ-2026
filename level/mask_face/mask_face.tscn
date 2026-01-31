@@ -15,8 +15,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xi0d6")
 face_item_btn = ExtResource("2_g51uk")
+<<<<<<< HEAD
 fall_texture = ExtResource("4_kykf2")
 fall_speed = 1.0
+=======
+initial_height = null
+limit_left = null
+limit_right = null
+>>>>>>> ef329eb13df4d29d78242ec73aa4af8d47fe3d90
 face_res_group = ExtResource("3_rprlw")
 target_count = 3
 
@@ -213,3 +219,6 @@ offset_top = -53.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "确认"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/HBoxContainer/Decor/Random" to="." method="_on_random_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/HBoxContainer/Decor/Confirm" to="." method="_on_confirm_pressed"]
