@@ -15,6 +15,11 @@ config/use_custom_user_dir=true
 config/custom_user_dir_name="GGJ2026"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/CodeEditorSwitch/plugin.cfg", "res://addons/DragNDropNodes/plugin.cfg", "res://addons/godot_resource_groups/plugin.cfg")
