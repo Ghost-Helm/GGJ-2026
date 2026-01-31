@@ -16,7 +16,10 @@ var record_position_list: PackedVector2Array
 @export var fall_speed: float
 @export var fall_delta_second: float
 
+<<<<<<< Updated upstream
 var _current_second: float
+=======
+>>>>>>> Stashed changes
 
 func _add_texture(texture: Texture2D) -> void:
     var fall_scene: TextureRect = fall_texture.instantiate()
@@ -26,6 +29,9 @@ func _add_texture(texture: Texture2D) -> void:
     current_fall_scene = fall_scene
     fall_scene.position.y = initial_height
     is_move = true
+	current_fall_scene = fall_scene
+	fall_scene.position.y = initial_height
+	is_move = true
 
 var current_fall_scene: TextureRect
 var is_move: bool = false
@@ -33,6 +39,7 @@ var is_fall: bool = false
 
 
 func _input(event: InputEvent) -> void:
+<<<<<<< Updated upstream
     if event.is_action_pressed("mask_face_fall"):
         if is_move == true && is_fall == false:
             is_move = false
@@ -60,6 +67,8 @@ func _physics_process(delta: float) -> void:
         current_fall_scene.position.y += fall_speed
         _current_second = 0
     _current_second += delta
+=======
+>>>>>>> Stashed changes
 
 
 @export var face_res_group: ResourceGroup
@@ -73,7 +82,6 @@ var _other_list: Array[FaceRes]
 var _last_result: Array[FaceRes]
 
 ## 当前的装扮进度
-var cur_state: FaceRes.FACE_TYPE = FaceRes.FACE_TYPE.Eyebrow
 
 ## 在DecorList中生成
 func create_decor_show():
@@ -88,6 +96,7 @@ func create_decor_show():
         face_tmp.setup(face_res)
 
         face_tmp.connect("button_up", _add_texture.bind(face_res.face_img))
+		face_tmp.connect("button_up", _add_texture.bind(face_res.face_img))
 
 
 func get_random_face_res(type: FaceRes.FACE_TYPE) -> Array[FaceRes]:
@@ -141,6 +150,7 @@ func get_random_face_res(type: FaceRes.FACE_TYPE) -> Array[FaceRes]:
 
 
 func _ready() -> void:
+<<<<<<< Updated upstream
     for face_res in face_res_group.load_all():
         match face_res.type:
             FaceRes.FACE_TYPE.HairCut:
