@@ -162,7 +162,7 @@ layout_mode = 2
 text = "细节"
 
 [node name="Decor" type="Control" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=82437423]
-custom_minimum_size = Vector2(900, 0)
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 
 [node name="Title" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer/Decor" unique_id=473393950]

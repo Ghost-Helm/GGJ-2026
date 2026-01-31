@@ -23,6 +23,7 @@ buses/default_bus_layout="uid://cge03cov6wu2k"
 [autoload]
 
 Events="*uid://bylqsmlv445q1"
+Save="*uid://cqnt3ltc5ybp"
 
 [debug]
 
@@ -30,8 +31,8 @@ gdscript/warnings/unused_signal=0
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=1600
+window/size/viewport_height=1200
 window/stretch/mode="viewport"
 
 [editor_plugins]
@@ -41,6 +42,7 @@ enabled=PackedStringArray("res://addons/CodeEditorSwitch/plugin.cfg", "res://add
 [gui]
 
 theme/custom="uid://h552b681nuus"
+theme/custom_font="uid://b01pxf427khu"
 
 [input]
 

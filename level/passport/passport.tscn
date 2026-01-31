@@ -72,6 +72,13 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "签名"
 
+[node name="Photo" type="TextureRect" parent="Control" unique_id=331333691]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 66.0
+offset_right = 120.0
+offset_bottom = 106.0
+
 [node name="ChangeTimer" type="Timer" parent="." unique_id=382653799]
 
 [connection signal="pressed" from="Control/SignName" to="." method="_on_sign_name_pressed"]
