@@ -1,7 +1,78 @@
 [gd_scene format=3 uid="uid://bf2ec3lskuvra"]
 
+[ext_resource type="Script" uid="uid://c00wfgtohd7ev" path="res://level/mask_face/mask_step.gd" id="1_web4a"]
+[ext_resource type="Texture2D" uid="uid://dlynm1yr5peay" path="res://asset/mask_face_ui/mask_type_normal.png" id="2_6bdlu"]
+[ext_resource type="Texture2D" uid="uid://bf82glwa7823l" path="res://asset/mask_face_ui/eye_icon.png" id="3_hn0mf"]
+[ext_resource type="Texture2D" uid="uid://nlb4j3yb4aqr" path="res://asset/mask_face_ui/mask_type_select.png" id="4_n224h"]
+[ext_resource type="Texture2D" uid="uid://d2o2nhchrnthp" path="res://asset/mask_face_ui/eye_do.png" id="5_hn0mf"]
+
 [node name="MaskStep" type="Button" unique_id=134060992]
-custom_minimum_size = Vector2(150, 150)
-offset_right = 8.0
-offset_bottom = 8.0
+custom_minimum_size = Vector2(160, 114)
+offset_right = 124.0
+offset_bottom = 100.0
 disabled = true
+flat = true
+script = ExtResource("1_web4a")
+
+[node name="NormalBg" type="TextureRect" parent="." unique_id=503594705]
+custom_minimum_size = Vector2(160, 114)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -57.0
+offset_right = 80.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6bdlu")
+
+[node name="Normal" type="TextureRect" parent="." unique_id=321599796]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_hn0mf")
+
+[node name="SelectBg" type="TextureRect" parent="." unique_id=18684805]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -57.0
+offset_right = 80.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_n224h")
+
+[node name="Select" type="TextureRect" parent="." unique_id=842620730]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_hn0mf")

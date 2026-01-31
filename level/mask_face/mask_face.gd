@@ -1,18 +1,24 @@
 extends Control
 
-@onready var mask_hair_btn: Button = $MarginContainer/HBoxContainer/HBoxContainer/MaskStep/MaskHairCut
-@onready var mask_eye_btn: Button = $MarginContainer/HBoxContainer/HBoxContainer/MaskStep/MaskEye
-@onready var mask_mouse_btn: Button = $MarginContainer/HBoxContainer/HBoxContainer/MaskStep/MaskMouse
-@onready var mask_other_btn: Button = $MarginContainer/HBoxContainer/HBoxContainer/MaskStep/MaskOther
+@onready var mask_eye_btn: Button = $VBoxContainer/MaskStep/List/MaskEyeBtn
+@onready var mask_eye_brow_btn: Button = $VBoxContainer/MaskStep/List/MaskEyeBrowBtn
+@onready var mask_nose_btn: Button = $VBoxContainer/MaskStep/List/MaskNoseBtn
+@onready var mask_mouse_btn: Button = $VBoxContainer/MaskStep/List/MaskMouseBtn
+@onready var mask_other_btn: Button = $VBoxContainer/MaskStep/List/MaskOtherBtn
+
+@onready var mask_list: VBoxContainer = $VBoxContainer/MaskStep/List
+
 
 var record_position_list: PackedVector2Array
 
+@export var random_face_item_pic: Array[Texture2D]
 
 ## 显示的随机五官列表
-@onready var decor_list: VBoxContainer = $MarginContainer/HBoxContainer/HBoxContainer/Decor/DecorList
-@export var face_item_btn: PackedScene
 
-@onready var face_item: Control = $MarginContainer/HBoxContainer/People/Face/FaceItem
+@export var face_item_btn: PackedScene
+@onready var decor_list: VBoxContainer = $Decor/DecorList
+
+@onready var face_item: Control = $People/Face/FaceItem
 @export var fall_texture: PackedScene
 @export var initial_height: float
 @export var limit_left: float
@@ -76,8 +82,9 @@ func _physics_process(delta: float) -> void:
 @export var face_res_group: ResourceGroup
 @export var target_count: int
 
-var _hair_cut_list: Array[FaceRes]
+var _eye_list: Array[FaceRes]
 var _eyebrow_list: Array[FaceRes]
+var _nose_list: Array[FaceRes]
 var _mouse_list: Array[FaceRes]
 var _other_list: Array[FaceRes]
 
@@ -85,12 +92,13 @@ var _last_result: Array[FaceRes]
 
 ## 当前的装扮进度
 var mask_step: Dictionary[FaceRes.FACE_TYPE, Button]
-var cur_state: FaceRes.FACE_TYPE = FaceRes.FACE_TYPE.HairCut
+var cur_state: FaceRes.FACE_TYPE = FaceRes.FACE_TYPE.Eye
 
 ## 在DecorList中生成
 func create_decor_show():
     var random_face_list = get_random_face_res(cur_state)
 
+<< << << < HEAD
     for old_face_item in decor_list.get_children():
         old_face_item.queue_free()
 
@@ -98,6 +106,17 @@ func create_decor_show():
         var face_tmp = face_item_btn.instantiate() as FaceItemBtn
         decor_list.add_child(face_tmp)
         face_tmp.setup(face_res)
+== == == =
+	for old_face_item in decor_list.get_children():
+		old_face_item.queue_free()
+
+	var id = 0
+	for face_res in random_face_list:
+		var face_tmp = face_item_btn.instantiate() as FaceItemBtn
+		decor_list.add_child(face_tmp)
+		face_tmp.setup(face_res, random_face_item_pic[id], id)
+		id += 1
+>> >> >> > ace865edd9f7fa3200f9e795549f8618c96cf445
 
         face_tmp.pressed.connect(on_face_pressed.bind(face_res))
 
@@ -109,6 +128,7 @@ func on_face_pressed(face_res: FaceRes):
 
 
 func get_random_face_res(type: FaceRes.FACE_TYPE) -> Array[FaceRes]:
+<< << << < HEAD
     var target_list: Array[FaceRes]
     match type:
         FaceRes.FACE_TYPE.HairCut:
@@ -119,6 +139,18 @@ func get_random_face_res(type: FaceRes.FACE_TYPE) -> Array[FaceRes]:
             target_list = _mouse_list
         FaceRes.FACE_TYPE.Other:
             target_list = _other_list
+== == == =
+	var target_list: Array[FaceRes]
+	match type:
+		FaceRes.FACE_TYPE.Eye:
+			target_list = _eye_list
+		FaceRes.FACE_TYPE.Eyebrow:
+			target_list = _eyebrow_list
+		FaceRes.FACE_TYPE.Mouse:
+			target_list = _mouse_list
+		FaceRes.FACE_TYPE.Other:
+			target_list = _other_list
+>> >> >> > ace865edd9f7fa3200f9e795549f8618c96cf445
 
     var current_result: Array[FaceRes] = []
     var is_duplicate: bool = true
@@ -197,6 +229,7 @@ func _on_confirm_pressed() -> void:
         Save.save_position_data(record_position_list)
         Save.save_image(get_viewport().get_texture().get_image())
 
+<< << << < HEAD
         Events.emit_signal("request_change_level", "Passport")
     else:
         cur_state += 1
@@ -204,6 +237,17 @@ func _on_confirm_pressed() -> void:
         var cur_button = mask_step[cur_state] as Button
         cur_button.disabled = false
         cur_button.button_pressed = true
+== == == =
+		Events.emit_signal("request_change_level", "Passport")
+	else:
+		cur_state += 1
+		for mask_type_item: MaskStepBtn in mask_list.get_children():
+			mask_type_item.set_select(false)
+		create_decor_show()
+		var cur_button = mask_step[cur_state] as Button
+		cur_button.set_select(true)
+
+>> >> >> > ace865edd9f7fa3200f9e795549f8618c96cf445
 
 
 func _on_random_pressed() -> void:
