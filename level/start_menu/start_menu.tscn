@@ -1,3 +1,50 @@
 [gd_scene format=3 uid="uid://bvfvtwmdxlqer"]
 
-[node name="StartMenu" type="Node2D" unique_id=634045077]
+[ext_resource type="Script" uid="uid://bq4sroln66raj" path="res://level/start_menu/start_menu.gd" id="1_bx62q"]
+
+[node name="StartMenu" type="Control" unique_id=2075101733]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bx62q")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1087329280]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1149352854]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="StartGame" type="Button" parent="MarginContainer/VBoxContainer" unique_id=988528316]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "开始游戏"
+
+[node name="AboutUs" type="Button" parent="MarginContainer/VBoxContainer" unique_id=714595338]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "关于我们"
+
+[node name="ExitGame" type="Button" parent="MarginContainer/VBoxContainer" unique_id=282259710]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "退出游戏"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/AboutUs" to="." method="_on_about_us_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ExitGame" to="." method="_on_exit_game_pressed"]

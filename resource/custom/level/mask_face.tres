@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelRes" format=3 uid="uid://b0brbddvjesin"]
+
+[ext_resource type="Script" uid="uid://cdgv7pmctqdj6" path="res://resource/custom/level/level_res.gd" id="1_72hgp"]
+[ext_resource type="PackedScene" uid="uid://bt3yi74wnbucf" path="res://level/mask_face/mask_face.tscn" id="1_da6lm"]
+
+[resource]
+script = ExtResource("1_72hgp")
+level_name = &"MaskFace"
+level_scene = ExtResource("1_da6lm")
+metadata/_custom_type_script = "uid://cdgv7pmctqdj6"

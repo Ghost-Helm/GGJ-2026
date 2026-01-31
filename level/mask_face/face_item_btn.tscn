@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dtj34ww4fsus8"]
+
+[node name="FaceItemBtn" type="Button" unique_id=2074051788]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "眉毛A"
