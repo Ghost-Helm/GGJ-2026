@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "run Godot engine",
+      "type": "shell",
+      "command": ".\\.engine\\godot_engine.exe",
+      "args": [".\\project.godot"],
+      "problemMatcher": [],
+      "runOptions": {"runOn": "folderOpen",}
+    }
+  ]
+}
