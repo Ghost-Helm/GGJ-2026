@@ -19,6 +19,12 @@ var record_position_list: PackedVector2Array
 <<<<<<< Updated upstream
 var _current_second: float
 =======
+@onready var mask_hair_btn: Button = %MaskHairCut
+@onready var mask_eye_btn: Button = %MaskEye
+@onready var mask_mouse_btn: Button = %MaskMouse
+@onready var mask_other_btn: Button = %MaskOther
+
+
 >>>>>>> Stashed changes
 
 func _add_texture(texture: Texture2D) -> void:
@@ -26,9 +32,6 @@ func _add_texture(texture: Texture2D) -> void:
     face_item.add_child(fall_scene)
     fall_scene.texture = GradientTexture2D.new() # TODO: texture
 
-    current_fall_scene = fall_scene
-    fall_scene.position.y = initial_height
-    is_move = true
 	current_fall_scene = fall_scene
 	fall_scene.position.y = initial_height
 	is_move = true
@@ -68,6 +71,25 @@ func _physics_process(delta: float) -> void:
         _current_second = 0
     _current_second += delta
 =======
+	if event.is_action_pressed("mask_face_fall") && is_move == true && is_fall == false:
+		is_move = false
+		is_fall = true
+	if event.is_action_pressed("mask_face_accept") && is_move == false && is_fall == true:
+		is_move = false
+		is_fall = false
+
+	get_viewport().handle_input_locally
+
+
+func _physics_process(_delta: float) -> void:
+	if is_move:
+		var mouse_position: Vector2 = face_item.get_local_mouse_position()
+		var left_limit: float = limit_left
+		var right_limit: float = face_item.size.x - limit_right
+		var target_position_x: float = clampf(mouse_position.x, left_limit, right_limit)
+		current_fall_scene.position.x = target_position_x
+	elif is_fall:
+		current_fall_scene.position.y += fall_speed
 >>>>>>> Stashed changes
 
 
@@ -82,6 +104,9 @@ var _other_list: Array[FaceRes]
 var _last_result: Array[FaceRes]
 
 ## 当前的装扮进度
+var mask_step: Dictionary[FaceRes.FACE_TYPE,Button]
+
+var cur_state: FaceRes.FACE_TYPE = FaceRes.FACE_TYPE.HairCut
 
 ## 在DecorList中生成
 func create_decor_show():
@@ -95,7 +120,6 @@ func create_decor_show():
         decor_list.add_child(face_tmp)
         face_tmp.setup(face_res)
 
-        face_tmp.connect("button_up", _add_texture.bind(face_res.face_img))
 		face_tmp.connect("button_up", _add_texture.bind(face_res.face_img))
 
 
@@ -168,6 +192,41 @@ func _on_confirm_pressed() -> void:
     cur_state += 1
     if cur_state > FaceRes.FACE_TYPE.size():
         Events.emit_signal("request_change_level", "Passport")
+=======
+	for face_res in face_res_group.load_all():
+		match face_res.type:
+			FaceRes.FACE_TYPE.HairCut:
+				_hair_cut_list.append(face_res)
+			FaceRes.FACE_TYPE.Eyebrow:
+				_eyebrow_list.append(face_res)
+			FaceRes.FACE_TYPE.Mouse:
+				_mouse_list.append(face_res)
+			FaceRes.FACE_TYPE.Other:
+				_other_list.append(face_res)
+	
+	mask_step = {
+		FaceRes.FACE_TYPE.HairCut: mask_hair_btn,
+		FaceRes.FACE_TYPE.Eyebrow: mask_eye_btn,
+		FaceRes.FACE_TYPE.Mouse: mask_mouse_btn,
+		FaceRes.FACE_TYPE.Other: mask_other_btn,
+	}
+	create_decor_show()
+	var cur_button = mask_step[cur_state] as Button
+	cur_button.disabled = false
+	cur_button.button_pressed = true
+
+
+func _on_confirm_pressed() -> void:
+	if cur_state == FaceRes.FACE_TYPE.size()-1:
+		Events.emit_signal("request_change_level", "Passport")
+	else:
+		cur_state += 1
+		create_decor_show()
+		var cur_button = mask_step[cur_state] as Button
+		cur_button.disabled = false
+		cur_button.button_pressed = true
+
+>>>>>>> Stashed changes
 
 
 func _on_random_pressed() -> void:
