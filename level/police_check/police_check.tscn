@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://dh3b58d8c5lpa"]
 
+[ext_resource type="Script" uid="uid://ctl8tm4wvhmtt" path="res://level/police_check/popup.gd" id="1_bap7t"]
+[ext_resource type="Resource" uid="uid://bk62b1vj1n57u" path="res://resource/resource_group/sound_answer_res_group.tres" id="2_psa0k"]
+
 [node name="PoliceCheck" type="Control" unique_id=940163699]
 layout_mode = 3
 anchors_preset = 15
@@ -86,3 +89,72 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "当前检查环节"
 horizontal_alignment = 1
+
+[node name="Popup" type="Control" parent="." unique_id=2055397236]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bap7t")
+sound_answer_res_group = ExtResource("2_psa0k")
+
+[node name="ColorRect" type="ColorRect" parent="Popup" unique_id=1974580356]
+layout_mode = 0
+offset_left = 273.0
+offset_top = 160.0
+offset_right = 1312.0
+offset_bottom = 898.0
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Popup" unique_id=169235676]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup" unique_id=2126608575]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -265.0
+offset_right = 400.0
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Popup/VBoxContainer" unique_id=1291260856]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Popup/VBoxContainer" unique_id=22883330]
+layout_mode = 2
+size_flags_vertical = 3
+text = "play"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Popup/VBoxContainer" unique_id=355492551]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Popup/VBoxContainer/HBoxContainer" unique_id=674218844]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button2" type="Button" parent="Popup/VBoxContainer/HBoxContainer" unique_id=2046469516]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button3" type="Button" parent="Popup/VBoxContainer/HBoxContainer" unique_id=1138078274]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button4" type="Button" parent="Popup/VBoxContainer/HBoxContainer" unique_id=3012396]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button5" type="Button" parent="Popup/VBoxContainer/HBoxContainer" unique_id=391976363]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="Popup/VBoxContainer/Button" to="Popup" method="_play_sound"]

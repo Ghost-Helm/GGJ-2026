@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SoundAnswerRes" format=3 uid="uid://dvqlosnsad0ru"]
+
+[ext_resource type="Script" uid="uid://bb1qu3tlk6ws8" path="res://resource/custom/sound_answer/sound_answer_res.gd" id="1_yralr"]
+
+[resource]
+script = ExtResource("1_yralr")
+question = &"你好"
+answer = PackedInt32Array(3, 2, 0)
+metadata/_custom_type_script = "uid://bb1qu3tlk6ws8"
