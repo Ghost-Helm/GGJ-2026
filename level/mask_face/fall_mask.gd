@@ -1,6 +1,8 @@
 extends Control
 class_name FallMask
-@onready var mask_name: Label = $MaskName
+
+@onready var texture_rect: TextureRect = $TextureRect
 
 func setup(res:FaceRes):
-	mask_name.text = res.face_name
+	texture_rect.texture = res.face_img
+	
