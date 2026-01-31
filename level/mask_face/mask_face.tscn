@@ -157,7 +157,7 @@ layout_mode = 2
 text = "鼻子
 嘴巴"
 
-[node name="MaskDecor" parent="MarginContainer/HBoxContainer/HBoxContainer/MaskStep" unique_id=2140301863 instance=ExtResource("1_jgidl")]
+[node name="MaskOther" parent="MarginContainer/HBoxContainer/HBoxContainer/MaskStep" unique_id=2140301863 instance=ExtResource("1_jgidl")]
 layout_mode = 2
 text = "细节"
 

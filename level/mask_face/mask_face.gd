@@ -1,5 +1,9 @@
 extends Control
 
+@onready var mask_hair_btn: Button = $MarginContainer/HBoxContainer/HBoxContainer/MaskStep/MaskHairCut
+@onready var mask_eye_btn: Button = $MarginContainer/HBoxContainer/HBoxContainer/MaskStep/MaskEye
+@onready var mask_mouse_btn: Button = $MarginContainer/HBoxContainer/HBoxContainer/MaskStep/MaskMouse
+@onready var mask_other_btn: Button = $MarginContainer/HBoxContainer/HBoxContainer/MaskStep/MaskOther
 
 var record_position_list: PackedVector2Array
 
@@ -81,7 +85,8 @@ var _other_list: Array[FaceRes]
 var _last_result: Array[FaceRes]
 
 ## 当前的装扮进度
-var cur_state: FaceRes.FACE_TYPE = FaceRes.FACE_TYPE.Eyebrow
+var mask_step: Dictionary[FaceRes.FACE_TYPE,Button]
+var cur_state: FaceRes.FACE_TYPE = FaceRes.FACE_TYPE.HairCut
 
 ## 在DecorList中生成
 func create_decor_show():
@@ -166,13 +171,30 @@ func _ready() -> void:
 				_mouse_list.append(face_res)
 			FaceRes.FACE_TYPE.Other:
 				_other_list.append(face_res)
+	
+	mask_step = {
+		FaceRes.FACE_TYPE.HairCut: mask_hair_btn,
+		FaceRes.FACE_TYPE.Eyebrow: mask_eye_btn,
+		FaceRes.FACE_TYPE.Mouse: mask_mouse_btn,
+		FaceRes.FACE_TYPE.Other: mask_other_btn,
+	}
+	create_decor_show()
+	var cur_button = mask_step[cur_state] as Button
+	cur_button.disabled = false
+	cur_button.button_pressed = true			
+	
 	create_decor_show()
 
 
 func _on_confirm_pressed() -> void:
-	cur_state += 1
-	if cur_state > FaceRes.FACE_TYPE.size():
+	if cur_state == FaceRes.FACE_TYPE.size()-1:
 		Events.emit_signal("request_change_level", "Passport")
+	else:
+		cur_state += 1
+		create_decor_show()
+		var cur_button = mask_step[cur_state] as Button
+		cur_button.disabled = false
+		cur_button.button_pressed = true
 
 
 func _on_random_pressed() -> void:
