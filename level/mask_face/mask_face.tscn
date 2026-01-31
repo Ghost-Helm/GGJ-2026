@@ -2,9 +2,31 @@
 
 [ext_resource type="PackedScene" uid="uid://bf2ec3lskuvra" path="res://level/mask_face/mask_step.tscn" id="1_jgidl"]
 [ext_resource type="Script" uid="uid://c66rf0vuum76c" path="res://level/mask_face/mask_face.gd" id="1_xi0d6"]
+[ext_resource type="Texture2D" uid="uid://8duha6qvinp2" path="res://asset/mask_face_ui/face_item (1).png" id="2_acfhl"]
 [ext_resource type="PackedScene" uid="uid://dtj34ww4fsus8" path="res://level/mask_face/face_item_btn.tscn" id="2_g51uk"]
 [ext_resource type="PackedScene" uid="uid://1uxdh220kr0e" path="res://level/mask_face/fall_mask.tscn" id="3_kykf2"]
+[ext_resource type="Texture2D" uid="uid://couda53miiw38" path="res://asset/mask_face_ui/face_item (2).png" id="3_p2w7j"]
 [ext_resource type="Resource" uid="uid://nuhe2m40oooy" path="res://resource/resource_group/face_res_group.tres" id="3_rprlw"]
+[ext_resource type="Texture2D" uid="uid://dau6t5pki2atj" path="res://asset/mask_face_ui/face_item (3).png" id="4_stu2h"]
+[ext_resource type="Texture2D" uid="uid://bn6wrmfxlyy57" path="res://asset/mask_face_ui/bg.png" id="5_828kl"]
+[ext_resource type="Texture2D" uid="uid://dn1cryesw88bx" path="res://asset/mask_face_ui/target_photo.png" id="5_gyl3a"]
+[ext_resource type="Texture2D" uid="uid://qcegs8g1103g" path="res://asset/mask_face_ui/mask_list_bg.png" id="6_y10jv"]
+[ext_resource type="Texture2D" uid="uid://kwqte1yc6sbx" path="res://asset/mask_face_ui/photo_bg.png" id="8_bbqle"]
+[ext_resource type="Texture2D" uid="uid://l71daj4talqt" path="res://asset/mask_face_ui/default_hair.png" id="9_3e65y"]
+[ext_resource type="Texture2D" uid="uid://d0lkl5q8fa8il" path="res://asset/img/mask_face.png" id="9_vq7kv"]
+[ext_resource type="Texture2D" uid="uid://emvihkco68gv" path="res://asset/mask_face_ui/dialog_bg.png" id="10_omxrq"]
+[ext_resource type="Texture2D" uid="uid://7sf0sr1ouhvu" path="res://asset/mask_face_ui/dialog_img.png" id="11_3l53b"]
+[ext_resource type="Texture2D" uid="uid://dj7s2ctiehmto" path="res://asset/mask_face_ui/face_item_list.png" id="12_3e65y"]
+[ext_resource type="Texture2D" uid="uid://bjw6476d065wi" path="res://asset/mask_face_ui/eye_title.png" id="13_3l53b"]
+[ext_resource type="Texture2D" uid="uid://c4011jqf1bqws" path="res://asset/mask_face_ui/eyebrow_icon.png" id="13_cyk7u"]
+[ext_resource type="Texture2D" uid="uid://c6du04qd45ohi" path="res://asset/mask_face_ui/random.png" id="14_828kl"]
+[ext_resource type="Texture2D" uid="uid://dmkteyduwkjqi" path="res://asset/mask_face_ui/nose_icon.png" id="14_x0liv"]
+[ext_resource type="Texture2D" uid="uid://cjhp0kvj3c2vh" path="res://asset/mask_face_ui/other_icon.png" id="15_4wuom"]
+[ext_resource type="Texture2D" uid="uid://df7cyhxp1oytx" path="res://asset/mask_face_ui/eyebrow_do.png" id="15_h522x"]
+[ext_resource type="Texture2D" uid="uid://176xqbi3ltbn" path="res://asset/mask_face_ui/nose_do.png" id="17_2ongo"]
+[ext_resource type="Texture2D" uid="uid://mwwved4wlbm1" path="res://asset/mask_face_ui/mouse_icon.png" id="18_h522x"]
+[ext_resource type="Texture2D" uid="uid://cfpj4waoirbxu" path="res://asset/mask_face_ui/mouse_do.png" id="19_bwv2a"]
+[ext_resource type="Texture2D" uid="uid://cqnh3cy7767qh" path="res://asset/mask_face_ui/other_do.png" id="21_f784x"]
 
 [node name="MaskFace" type="Control" unique_id=521831287]
 layout_mode = 3
@@ -14,6 +36,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xi0d6")
+random_face_item_pic = Array[Texture2D]([ExtResource("2_acfhl"), ExtResource("3_p2w7j"), ExtResource("4_stu2h")])
 face_item_btn = ExtResource("2_g51uk")
 fall_texture = ExtResource("3_kykf2")
 fall_speed = 100.0
@@ -21,44 +44,157 @@ fall_delta_second = 1.0
 face_res_group = ExtResource("3_rprlw")
 target_count = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=426590284]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
+[node name="Bg" type="TextureRect" parent="." unique_id=1999562956]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_828kl")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1295103805]
-layout_mode = 2
-alignment = 1
-
-[node name="People" type="Control" parent="MarginContainer/HBoxContainer" unique_id=349448694]
-custom_minimum_size = Vector2(800, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="Face" type="Control" parent="MarginContainer/HBoxContainer/People" unique_id=877466286]
-custom_minimum_size = Vector2(800, 1000)
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=765483273]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -500.0
-offset_right = 400.0
-offset_bottom = 500.0
+offset_left = -748.0
+offset_top = -567.0
+offset_right = -544.0
+offset_bottom = 489.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="TargetPhoto" type="TextureRect" parent="VBoxContainer" unique_id=570150244]
+layout_mode = 2
+texture = ExtResource("5_gyl3a")
+
+[node name="MaskStep" type="Control" parent="VBoxContainer" unique_id=273814600]
+custom_minimum_size = Vector2(196, 738)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="ListBg" type="TextureRect" parent="VBoxContainer/MaskStep" unique_id=1331894604]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -369.0
+offset_right = 98.0
+offset_bottom = 369.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("6_y10jv")
+
+[node name="List" type="VBoxContainer" parent="VBoxContainer/MaskStep" unique_id=1006101711]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -259.0
+offset_right = 62.0
+offset_bottom = 259.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="MaskEyeBtn" parent="VBoxContainer/MaskStep/List" unique_id=1786431788 instance=ExtResource("1_jgidl")]
+layout_mode = 2
+
+[node name="MaskEyeBrowBtn" parent="VBoxContainer/MaskStep/List" unique_id=134060992 instance=ExtResource("1_jgidl")]
+layout_mode = 2
+
+[node name="Normal" parent="VBoxContainer/MaskStep/List/MaskEyeBrowBtn" index="1" unique_id=321599796]
+texture = ExtResource("13_cyk7u")
+
+[node name="Select" parent="VBoxContainer/MaskStep/List/MaskEyeBrowBtn" index="3" unique_id=842620730]
+texture = ExtResource("15_h522x")
+
+[node name="MaskNoseBtn" parent="VBoxContainer/MaskStep/List" unique_id=1170963981 instance=ExtResource("1_jgidl")]
+layout_mode = 2
+
+[node name="Normal" parent="VBoxContainer/MaskStep/List/MaskNoseBtn" index="1" unique_id=321599796]
+texture = ExtResource("14_x0liv")
+
+[node name="Select" parent="VBoxContainer/MaskStep/List/MaskNoseBtn" index="3" unique_id=842620730]
+texture = ExtResource("17_2ongo")
+
+[node name="MaskMouseBtn" parent="VBoxContainer/MaskStep/List" unique_id=1474542734 instance=ExtResource("1_jgidl")]
+layout_mode = 2
+
+[node name="Normal" parent="VBoxContainer/MaskStep/List/MaskMouseBtn" index="1" unique_id=321599796]
+texture = ExtResource("18_h522x")
+
+[node name="Select" parent="VBoxContainer/MaskStep/List/MaskMouseBtn" index="3" unique_id=842620730]
+texture = ExtResource("19_bwv2a")
+
+[node name="MaskOtherBtn" parent="VBoxContainer/MaskStep/List" unique_id=2140301863 instance=ExtResource("1_jgidl")]
+layout_mode = 2
+
+[node name="Normal" parent="VBoxContainer/MaskStep/List/MaskOtherBtn" index="1" unique_id=321599796]
+texture = ExtResource("15_4wuom")
+
+[node name="Select" parent="VBoxContainer/MaskStep/List/MaskOtherBtn" index="3" unique_id=842620730]
+texture = ExtResource("21_f784x")
+
+[node name="People" type="Control" parent="." unique_id=349448694]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -523.0
+offset_top = -563.0
+offset_right = 195.0
+offset_bottom = 567.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 
-[node name="Bg" type="ColorRect" parent="MarginContainer/HBoxContainer/People/Face" unique_id=1294136554]
+[node name="Face" type="Control" parent="People" unique_id=877466286]
+custom_minimum_size = Vector2(718, 1034)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -361.0
+offset_top = -563.0
+offset_right = 357.0
+offset_bottom = 471.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="Bg" type="TextureRect" parent="People/Face" unique_id=535443488]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_bbqle")
+
+[node name="VacantFace" type="TextureRect" parent="People/Face" unique_id=2033950817]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 6.0
+offset_right = 717.0
+offset_bottom = 1006.0
+texture = ExtResource("9_3e65y")
+
+[node name="FaceItem" type="Control" parent="People/Face" unique_id=1316933647]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,154 +202,165 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Eva" type="ColorRect" parent="MarginContainer/HBoxContainer/People/Face" unique_id=24000483]
+[node name="Dialog" type="Control" parent="People" unique_id=1190446562]
+custom_minimum_size = Vector2(500, 120)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -193.5
-offset_top = -801.0
-offset_right = 193.5
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0.32544088, 0.3254409, 0.32544088, 1)
-
-[node name="Photo" type="ColorRect" parent="MarginContainer/HBoxContainer/People/Face" unique_id=81961247]
-layout_mode = 1
-offset_left = -18.0
-offset_top = -31.0
-offset_right = 134.0
-offset_bottom = 167.0
-color = Color(0.24477637, 0.2447764, 0.24477637, 1)
-
-[node name="FaceItem" type="Control" parent="MarginContainer/HBoxContainer/People/Face" unique_id=1316933647]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Dialog" type="Control" parent="MarginContainer/HBoxContainer/People" unique_id=1190446562]
-custom_minimum_size = Vector2(500, 120)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
+offset_left = -359.0
+offset_top = -223.0
+offset_right = 375.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/People/Dialog" unique_id=1117873033]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0142752165, 0.014275218, 0.014275218, 1)
-
-[node name="Text" type="Label" parent="MarginContainer/HBoxContainer/People/Dialog" unique_id=585246830]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -96.0
-offset_top = -22.5
-offset_right = 96.0
-offset_bottom = 22.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "巴拉巴拉巴拉"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1792498008]
-layout_mode = 2
-
-[node name="MaskStep" type="VBoxContainer" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=1006101711]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-alignment = 1
-
-[node name="MaskHairCut" parent="MarginContainer/HBoxContainer/HBoxContainer/MaskStep" unique_id=134060992 instance=ExtResource("1_jgidl")]
-layout_mode = 2
-text = "发型
-脸型"
-
-[node name="MaskEye" parent="MarginContainer/HBoxContainer/HBoxContainer/MaskStep" unique_id=1786431788 instance=ExtResource("1_jgidl")]
-layout_mode = 2
-text = "眼睛
-眉毛"
-
-[node name="MaskMouse" parent="MarginContainer/HBoxContainer/HBoxContainer/MaskStep" unique_id=1474542734 instance=ExtResource("1_jgidl")]
-layout_mode = 2
-text = "鼻子
-嘴巴"
-
-[node name="MaskOther" parent="MarginContainer/HBoxContainer/HBoxContainer/MaskStep" unique_id=2140301863 instance=ExtResource("1_jgidl")]
-layout_mode = 2
-text = "细节"
-
-[node name="Decor" type="Control" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=82437423]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-
-[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer/Decor" unique_id=473393950]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -32.0
-offset_right = 32.0
-offset_bottom = 45.0
-grow_horizontal = 2
-text = "标题"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="DecorList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/HBoxContainer/Decor" unique_id=1251056749]
-custom_minimum_size = Vector2(0, 800)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Random" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer/Decor" unique_id=502353914]
+[node name="Bg" type="TextureRect" parent="People/Dialog" unique_id=1344473863]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -36.0
-offset_top = -53.0
-offset_right = 36.0
+offset_left = -346.0
+offset_top = -172.0
+offset_right = 364.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "随机"
+texture = ExtResource("10_omxrq")
 
-[node name="Confirm" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer/Decor" unique_id=773820119]
+[node name="HeadIcon" type="TextureRect" parent="People/Dialog" unique_id=1929838642]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -207.0
+offset_right = 206.0
+offset_bottom = 9.0
+grow_vertical = 0
+texture = ExtResource("11_3l53b")
+
+[node name="Text" type="Label" parent="People/Dialog" unique_id=585246830]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.0
+offset_top = -35.0
+offset_right = 315.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Decor" type="Control" parent="." unique_id=82437423]
+custom_minimum_size = Vector2(522, 1108)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 221.0
+offset_top = -565.0
+offset_right = 743.0
+offset_bottom = 543.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bg" type="TextureRect" parent="Decor" unique_id=2116618422]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -261.0
+offset_top = -554.0
+offset_right = 261.0
+offset_bottom = 554.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_3e65y")
+
+[node name="TitleIcon" type="TextureRect" parent="Decor" unique_id=2001252623]
+layout_mode = 1
+offset_left = 21.0
+offset_top = 34.0
+offset_right = 133.0
+offset_bottom = 90.0
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("13_3l53b")
+
+[node name="DecorList" type="VBoxContainer" parent="Decor" unique_id=1251056749]
+custom_minimum_size = Vector2(0, 800)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.0
+offset_top = -409.0
+offset_right = 229.0
+offset_bottom = 418.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Random" type="Button" parent="Decor" unique_id=502353914]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -118.0
+offset_top = 14.0
+offset_right = -10.0
+offset_bottom = 110.0
+grow_horizontal = 0
+icon = ExtResource("14_828kl")
+flat = true
+
+[node name="Confirm" type="Button" parent="Decor" unique_id=773820119]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -72.0
-offset_top = -53.0
+offset_left = -97.0
+offset_top = -64.0
+offset_right = -25.0
+offset_bottom = -11.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "确认"
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/HBoxContainer/Decor/Random" to="." method="_on_random_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/HBoxContainer/Decor/Confirm" to="." method="_on_confirm_pressed"]
+[node name="TargetImg" type="TextureRect" parent="." unique_id=426163244]
+visible = false
+modulate = Color(1, 1, 1, 0.35686275)
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 600.0
+scale = Vector2(2, 2)
+texture = ExtResource("9_vq7kv")
+
+[connection signal="pressed" from="Decor/Random" to="." method="_on_random_pressed"]
+[connection signal="pressed" from="Decor/Confirm" to="." method="_on_confirm_pressed"]
+
+[editable path="VBoxContainer/MaskStep/List/MaskEyeBrowBtn"]
+[editable path="VBoxContainer/MaskStep/List/MaskNoseBtn"]
+[editable path="VBoxContainer/MaskStep/List/MaskMouseBtn"]
+[editable path="VBoxContainer/MaskStep/List/MaskOtherBtn"]

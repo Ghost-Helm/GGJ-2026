@@ -5,6 +5,5 @@
 [resource]
 script = ExtResource("1_yiina")
 face_name = &"EyeA"
-type = 1
 dialog = "EyeA"
 metadata/_custom_type_script = "uid://bif667anywsjj"
