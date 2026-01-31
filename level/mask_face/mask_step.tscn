@@ -4,5 +4,3 @@
 custom_minimum_size = Vector2(150, 150)
 offset_right = 8.0
 offset_bottom = 8.0
-mouse_filter = 2
-disabled = true
