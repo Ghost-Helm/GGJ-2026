@@ -1,3 +1,88 @@
 [gd_scene format=3 uid="uid://dh3b58d8c5lpa"]
 
-[node name="PoliceCheck" type="Node2D" unique_id=1297045245]
+[node name="PoliceCheck" type="Control" unique_id=940163699]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2022749241]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Window" type="Control" parent="MarginContainer" unique_id=732536969]
+custom_minimum_size = Vector2(800, 1000)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Bg" type="ColorRect" parent="MarginContainer/Window" unique_id=292986694]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Police" type="ColorRect" parent="MarginContainer/Window" unique_id=1913039100]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -227.0
+offset_top = -829.0
+offset_right = 225.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.44291106, 0.44291067, 0.44291073, 1)
+
+[node name="Dialog" type="Control" parent="MarginContainer" unique_id=1618107016]
+custom_minimum_size = Vector2(1800, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Dialog" unique_id=137376750]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15487596, 0.154876, 0.15487596, 1)
+
+[node name="Label" type="Label" parent="MarginContainer/Dialog" unique_id=1236548895]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -22.5
+offset_right = 20.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "警察问话"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckStageHint" type="Label" parent="MarginContainer" unique_id=878515604]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "当前检查环节"
+horizontal_alignment = 1
