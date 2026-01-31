@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://dv15onsgc5b0x"]
 
 [ext_resource type="Script" uid="uid://b48usimgookl8" path="res://system/world.gd" id="1_7am6p"]
+[ext_resource type="Script" uid="uid://d4001cii6xga" path="res://system/main.gd" id="1_6558x"]
 [ext_resource type="Resource" uid="uid://dsga0k0p5vcnv" path="res://resource/resource_group/level_res_group.tres" id="2_gisfo"]
 
 [node name="Main" type="Node" unique_id=2012366658]
+script = ExtResource("1_6558x")
 
 [node name="World" type="Node" parent="." unique_id=2063269904]
 script = ExtResource("1_7am6p")

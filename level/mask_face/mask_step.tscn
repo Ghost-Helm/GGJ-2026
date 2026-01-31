@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bf2ec3lskuvra"]
+
+[node name="MaskStep" type="Button" unique_id=134060992]
+custom_minimum_size = Vector2(150, 150)
+offset_right = 8.0
+offset_bottom = 8.0

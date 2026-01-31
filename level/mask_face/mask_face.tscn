@@ -1,3 +1,213 @@
 [gd_scene format=3 uid="uid://bt3yi74wnbucf"]
 
-[node name="MaskFace" type="Node2D" unique_id=1870511378]
+[ext_resource type="PackedScene" uid="uid://bf2ec3lskuvra" path="res://level/mask_face/mask_step.tscn" id="1_jgidl"]
+[ext_resource type="Script" uid="uid://c66rf0vuum76c" path="res://level/mask_face/mask_face.gd" id="1_xi0d6"]
+[ext_resource type="PackedScene" uid="uid://dtj34ww4fsus8" path="res://level/mask_face/face_item_btn.tscn" id="2_g51uk"]
+
+[node name="MaskFace" type="Control" unique_id=521831287]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xi0d6")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=426590284]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1295103805]
+layout_mode = 2
+alignment = 1
+
+[node name="People" type="Control" parent="MarginContainer/HBoxContainer" unique_id=349448694]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Face" type="Control" parent="MarginContainer/HBoxContainer/People" unique_id=877466286]
+custom_minimum_size = Vector2(800, 1000)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -500.0
+offset_right = 400.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="Bg" type="ColorRect" parent="MarginContainer/HBoxContainer/People/Face" unique_id=1294136554]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Eva" type="ColorRect" parent="MarginContainer/HBoxContainer/People/Face" unique_id=24000483]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -193.5
+offset_top = -801.0
+offset_right = 193.5
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.32544088, 0.3254409, 0.32544088, 1)
+
+[node name="Decor" type="Control" parent="MarginContainer/HBoxContainer/People/Face" unique_id=1316933647]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dialog" type="Control" parent="MarginContainer/HBoxContainer/People" unique_id=1190446562]
+custom_minimum_size = Vector2(500, 120)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/HBoxContainer/People/Dialog" unique_id=1117873033]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0142752165, 0.014275218, 0.014275218, 1)
+
+[node name="Text" type="Label" parent="MarginContainer/HBoxContainer/People/Dialog" unique_id=585246830]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -22.5
+offset_right = 96.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "巴拉巴拉巴拉"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Photo" type="ColorRect" parent="MarginContainer/HBoxContainer/People" unique_id=81961247]
+layout_mode = 1
+offset_left = -18.0
+offset_top = -21.0
+offset_right = 134.0
+offset_bottom = 177.0
+color = Color(0.24477637, 0.2447764, 0.24477637, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1792498008]
+layout_mode = 2
+
+[node name="MaskStep" type="VBoxContainer" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=1006101711]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="MaskHairCut" parent="MarginContainer/HBoxContainer/HBoxContainer/MaskStep" unique_id=134060992 instance=ExtResource("1_jgidl")]
+layout_mode = 2
+text = "发型
+脸型"
+
+[node name="MaskEye" parent="MarginContainer/HBoxContainer/HBoxContainer/MaskStep" unique_id=1786431788 instance=ExtResource("1_jgidl")]
+layout_mode = 2
+text = "眼睛
+眉毛"
+
+[node name="MaskMouse" parent="MarginContainer/HBoxContainer/HBoxContainer/MaskStep" unique_id=1474542734 instance=ExtResource("1_jgidl")]
+layout_mode = 2
+text = "鼻子
+嘴巴"
+
+[node name="MaskDecor" parent="MarginContainer/HBoxContainer/HBoxContainer/MaskStep" unique_id=2140301863 instance=ExtResource("1_jgidl")]
+layout_mode = 2
+text = "细节"
+
+[node name="Decor" type="Control" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=82437423]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer/Decor" unique_id=473393950]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 45.0
+grow_horizontal = 2
+text = "标题"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DecorList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/HBoxContainer/Decor" unique_id=1251056749]
+custom_minimum_size = Vector2(0, 800)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FaceItemBtn" parent="MarginContainer/HBoxContainer/HBoxContainer/Decor/DecorList" unique_id=2074051788 instance=ExtResource("2_g51uk")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Random" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer/Decor" unique_id=502353914]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -53.0
+offset_right = 36.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "随机"
+
+[node name="Confirm" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer/Decor" unique_id=773820119]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -53.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "确认"
