@@ -1,4 +1,4 @@
-extends Button
+sextends Button
 class_name FaceItemBtn
 
 
