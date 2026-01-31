@@ -6,5 +6,5 @@
 script = ExtResource("1_301eq")
 base_folder = "res://resource/custom/level"
 includes = Array[String](["*.tres"])
-paths = Array[String](["res://resource/custom/level/mask_face.tres", "res://resource/custom/level/passport.tres", "res://resource/custom/level/pre_story.tres", "res://resource/custom/level/start_menu.tres"])
+paths = Array[String](["res://resource/custom/level/mask_face.tres", "res://resource/custom/level/passport.tres", "res://resource/custom/level/police_check.tres", "res://resource/custom/level/pre_story.tres", "res://resource/custom/level/start_menu.tres"])
 metadata/_custom_type_script = "uid://fulb7hvwdkex"
