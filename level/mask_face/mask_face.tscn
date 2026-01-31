@@ -15,14 +15,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xi0d6")
 face_item_btn = ExtResource("2_g51uk")
-<<<<<<< HEAD
 fall_texture = ExtResource("4_kykf2")
-fall_speed = 1.0
-=======
-initial_height = null
-limit_left = null
-limit_right = null
->>>>>>> ef329eb13df4d29d78242ec73aa4af8d47fe3d90
+fall_speed = 10.0
+fall_delta_second = 1.0
 face_res_group = ExtResource("3_rprlw")
 target_count = 3
 
