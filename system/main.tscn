@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b48usimgookl8" path="res://system/world.gd" id="1_7am6p"]
 [ext_resource type="Resource" uid="uid://dsga0k0p5vcnv" path="res://resource/resource_group/level_res_group.tres" id="2_gisfo"]
+[ext_resource type="PackedScene" uid="uid://bc1mj41yhkmn2" path="res://system/audio.tscn" id="3_6558x"]
 
 [node name="Main" type="Node" unique_id=2012366658]
 
@@ -9,4 +10,4 @@
 script = ExtResource("1_7am6p")
 level_res_resource_group = ExtResource("2_gisfo")
 
-[node name="Audio" type="Node" parent="." unique_id=1519354822]
+[node name="Audio" parent="." unique_id=1553434932 instance=ExtResource("3_6558x")]
