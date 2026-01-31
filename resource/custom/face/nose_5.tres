@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FaceRes" format=3 uid="uid://kgkasnmy051m"]
+
+[ext_resource type="Texture2D" uid="uid://bt4ssh2nbxm6n" path="res://asset/nose/nose_5.png" id="1_g5vbm"]
+[ext_resource type="Script" uid="uid://bif667anywsjj" path="res://resource/custom/face/face_res.gd" id="1_w2iv8"]
+
+[resource]
+script = ExtResource("1_w2iv8")
+face_name = &"Nose5"
+face_img = ExtResource("1_g5vbm")
+type = 2
+dialog = "NoseA"
+metadata/_custom_type_script = "uid://bif667anywsjj"
