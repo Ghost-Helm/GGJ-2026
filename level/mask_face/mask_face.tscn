@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bf2ec3lskuvra" path="res://level/mask_face/mask_step.tscn" id="1_jgidl"]
 [ext_resource type="Script" uid="uid://c66rf0vuum76c" path="res://level/mask_face/mask_face.gd" id="1_xi0d6"]
 [ext_resource type="PackedScene" uid="uid://dtj34ww4fsus8" path="res://level/mask_face/face_item_btn.tscn" id="2_g51uk"]
+[ext_resource type="Resource" uid="uid://nuhe2m40oooy" path="res://resource/resource_group/face_res_group.tres" id="3_rprlw"]
 
 [node name="MaskFace" type="Control" unique_id=521831287]
 layout_mode = 3
@@ -12,6 +13,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xi0d6")
+face_item_btn = ExtResource("2_g51uk")
+face_res_group = ExtResource("3_rprlw")
+target_count = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=426590284]
 layout_mode = 1
@@ -179,11 +183,6 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="FaceItemBtn" parent="MarginContainer/HBoxContainer/HBoxContainer/Decor/DecorList" unique_id=2074051788 instance=ExtResource("2_g51uk")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 
 [node name="Random" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer/Decor" unique_id=502353914]
 layout_mode = 1
