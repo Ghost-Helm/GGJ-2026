@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://du47a6y2t8gd1"]
+
+[ext_resource type="Script" uid="uid://dxgixr05ncdcx" path="res://level/about_us/about_us.gd" id="1_af06d"]
+[ext_resource type="Texture2D" uid="uid://bn6wrmfxlyy57" path="res://asset/mask_face_ui/bg.png" id="1_pwcar"]
+[ext_resource type="Texture2D" uid="uid://mlxw8ov530s1" path="res://asset/us/1.jpg" id="2_af06d"]
+[ext_resource type="Texture2D" uid="uid://cxhyn0xway1jd" path="res://asset/us/2.jpg" id="3_oc2gu"]
+[ext_resource type="Texture2D" uid="uid://rnwxwlcowluu" path="res://asset/us/3.jpg" id="4_qymvx"]
+[ext_resource type="Texture2D" uid="uid://d1qgqtu02lck7" path="res://asset/us/4.jpg" id="5_bluvs"]
+[ext_resource type="Texture2D" uid="uid://c8vfft1bkyv3o" path="res://asset/us/5.jpg" id="6_7ihkt"]
+[ext_resource type="Texture2D" uid="uid://dqqda4n7nwivs" path="res://asset/us/杨桃.png" id="7_ympgv"]
+
+[node name="AboutUs" type="Control" unique_id=926716677]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_af06d")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=952286960]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_pwcar")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=105166308]
+layout_mode = 0
+offset_left = 1046.0
+offset_top = 187.0
+offset_right = 2126.0
+offset_bottom = 1267.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_af06d")
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=1243323335]
+layout_mode = 0
+offset_left = 616.0
+offset_top = 198.0
+offset_right = 1662.0
+offset_bottom = 1244.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_oc2gu")
+
+[node name="TextureRect4" type="TextureRect" parent="." unique_id=358241325]
+layout_mode = 0
+offset_left = 622.00006
+offset_top = 608.00006
+offset_right = 1010.00006
+offset_bottom = 996.00006
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_qymvx")
+
+[node name="TextureRect5" type="TextureRect" parent="." unique_id=279383946]
+layout_mode = 0
+offset_left = 1052.0
+offset_top = 610.0
+offset_right = 2132.0
+offset_bottom = 1690.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_bluvs")
+
+[node name="TextureRect6" type="TextureRect" parent="." unique_id=405446246]
+layout_mode = 0
+offset_left = 218.0
+offset_top = 202.0
+offset_right = 729.0
+offset_bottom = 713.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_7ihkt")
+
+[node name="TextureRect7" type="TextureRect" parent="." unique_id=1080934077]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 613.0
+offset_right = 496.0
+offset_bottom = 885.0
+scale = Vector2(1.15, 1.15)
+texture = ExtResource("7_ympgv")
+
+[node name="Label" type="Label" parent="." unique_id=632036289]
+layout_mode = 0
+offset_left = 1153.0
+offset_top = 525.0
+offset_right = 1276.0
+offset_bottom = 559.0
+text = "Akachi"
+
+[node name="Label2" type="Label" parent="." unique_id=1634053106]
+layout_mode = 0
+offset_left = 343.0
+offset_top = 519.0
+offset_right = 466.0
+offset_bottom = 553.0
+text = "幽灵"
+
+[node name="Label3" type="Label" parent="." unique_id=2111393781]
+layout_mode = 0
+offset_left = 1187.0
+offset_top = 948.0
+offset_right = 1310.0
+offset_bottom = 982.0
+text = "小松"
+
+[node name="Label4" type="Label" parent="." unique_id=32729100]
+layout_mode = 0
+offset_left = 712.0
+offset_top = 517.0
+offset_right = 851.0
+offset_bottom = 551.0
+text = "cliionee"
+
+[node name="Label5" type="Label" parent="." unique_id=866483494]
+layout_mode = 0
+offset_left = 708.0
+offset_top = 941.0
+offset_right = 860.0
+offset_bottom = 975.0
+text = "OveHelm"
+
+[node name="Label6" type="Label" parent="." unique_id=438227413]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 947.0
+offset_right = 504.0
+offset_bottom = 981.0
+text = "杨桃"
+
+[node name="Button" type="Button" parent="." unique_id=1466250781]
+layout_mode = 0
+offset_left = 751.0
+offset_top = 1074.0
+offset_right = 823.0
+offset_bottom = 1116.0
+text = "返回"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

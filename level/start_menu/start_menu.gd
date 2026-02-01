@@ -20,3 +20,7 @@ func _on_start_game_pressed() -> void:
 func _apply_start_game_press_effect(is_pressed: bool) -> void:
     start_game_btn.pivot_offset = start_game_btn.size * 0.5
     start_game_btn.scale = _start_game_scale * (0.95 if is_pressed else 1.0)
+
+
+func _on_about_pressed() -> void:
+    Events.emit_signal("request_change_level", "AboutUs")
