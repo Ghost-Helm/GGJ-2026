@@ -330,6 +330,7 @@ grow_vertical = 2
 texture = ExtResource("12_3e65y")
 
 [node name="TitleIcon" type="Control" parent="Decor" unique_id=778982502]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -427,6 +428,56 @@ text = "下一个五官"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Retry" type="Button" parent="Decor" unique_id=1100659638]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -497.0
+offset_top = -1102.0
+offset_right = -361.0
+offset_bottom = -993.0
+grow_horizontal = 0
+grow_vertical = 0
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="Decor/Retry" unique_id=639014119]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.5
+offset_top = -59.0
+offset_right = 130.5
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("31_bwv2a")
+
+[node name="Label" type="Label" parent="Decor/Retry" unique_id=99388593]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -17.0
+offset_right = 80.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "撤回"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="TakePhoto" type="Button" parent="Decor" unique_id=1509136136]
 visible = false
 layout_mode = 1
@@ -485,6 +536,7 @@ texture = ExtResource("9_vq7kv")
 
 [connection signal="pressed" from="Decor/Random" to="." method="_on_random_pressed"]
 [connection signal="pressed" from="Decor/Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="Decor/Retry" to="." method="_on_retry_pressed"]
 
 [editable path="VBoxContainer/MaskStep/List/MaskEyeBrowBtn"]
 [editable path="VBoxContainer/MaskStep/List/MaskNoseBtn"]
