@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SoundRes" format=3 uid="uid://dq6snsy6ggqd6"]
+[gd_resource type="Resource" script_class="SoundRes" format=3 uid="uid://bhmmew2ojvxxj"]
 
 [ext_resource type="Script" uid="uid://cvtd0w4c4xsno" path="res://resource/custom/sound/sound_res.gd" id="1_w3ty0"]
 [ext_resource type="AudioStream" uid="uid://nr8qailoxy8r" path="res://asset/sound/切换.mp3" id="2_jlu48"]

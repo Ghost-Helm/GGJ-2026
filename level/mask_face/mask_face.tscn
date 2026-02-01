@@ -38,6 +38,7 @@
 [ext_resource type="Script" uid="uid://1rvdjge1csvm" path="res://level/mask_face/confirm.gd" id="31_f784x"]
 [ext_resource type="Texture2D" uid="uid://ces3eiqtmcutl" path="res://asset/mask_face_ui/take_photo.png" id="34_4bu3c"]
 [ext_resource type="Script" uid="uid://duamn24j60rh8" path="res://level/mask_face/take_photo.gd" id="34_cmht7"]
+[ext_resource type="AudioStream" uid="uid://nr8qailoxy8r" path="res://asset/sound/切换.mp3" id="40_c53jo"]
 [ext_resource type="Script" uid="uid://tii0xlff7wi6" path="res://level/mask_face/random.gd" id="random_script"]
 
 [node name="MaskFace" type="Control" unique_id=521831287]
@@ -533,6 +534,10 @@ offset_right = 800.0
 offset_bottom = 600.0
 scale = Vector2(2, 2)
 texture = ExtResource("9_vq7kv")
+
+[node name="NextFace" type="AudioStreamPlayer" parent="." unique_id=2094334532]
+stream = ExtResource("40_c53jo")
+volume_db = -11.089
 
 [connection signal="pressed" from="Decor/Random" to="." method="_on_random_pressed"]
 [connection signal="pressed" from="Decor/Confirm" to="." method="_on_confirm_pressed"]

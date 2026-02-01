@@ -10,9 +10,9 @@ func save_position_data(data: PackedVector3Array) -> void:
 
 func save_image(target_image: Image) -> void:
     image = target_image
-    image.save_png("user://uncut.png")
+    #image.save_png("user://uncut.png")
     var cut_image: Image = image.get_region(Rect2i(297, 70, 672, 922))
-    cut_image.save_png("user://cut.png")
+    #cut_image.save_png("user://cut.png")
     image = cut_image
     
     

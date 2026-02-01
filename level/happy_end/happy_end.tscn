@@ -96,22 +96,21 @@ offset_right = 877.0
 offset_bottom = 792.0
 texture = ExtResource("9_xkbk3")
 
-[node name="8" type="TextureRect" parent="." unique_id=489977066]
+[node name="8" type="TextureRect" parent="." unique_id=151515170]
+layout_mode = 0
+offset_left = 880.0
+offset_top = 516.0
+offset_right = 1084.0
+offset_bottom = 761.0
+texture = ExtResource("11_r6s3n")
+
+[node name="9" type="TextureRect" parent="." unique_id=489977066]
 layout_mode = 0
 offset_left = 1107.0
 offset_top = 509.0
 offset_right = 1549.0
 offset_bottom = 762.0
 texture = ExtResource("10_2l0dn")
-
-[node name="9" type="TextureRect" parent="." unique_id=151515170]
-layout_mode = 0
-offset_left = 1134.0
-offset_top = 478.00003
-offset_right = 1338.0
-offset_bottom = 723.0
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("11_r6s3n")
 
 [node name="10" type="TextureRect" parent="." unique_id=869255496]
 layout_mode = 0

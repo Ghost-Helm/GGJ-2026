@@ -237,7 +237,7 @@ func _ready() -> void:
 
 
 func _on_confirm_pressed() -> void:
-    Events.emit_signal("request_play_sound", "NextFace")
+    $NextFace.play()
     if cur_state == FaceRes.FACE_TYPE.size() - 1:
         return
 
