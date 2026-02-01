@@ -52,6 +52,7 @@ func _add_texture(face_res: FaceRes) -> void:
 var current_fall_scene: FallMask
 var current_face_res_type: FaceRes.FACE_TYPE
 var current_face_res: FaceRes
+var current_face_btn: FaceItemBtn
 var is_move: bool = false
 var is_fall: bool = false
 var is_mask: bool = false
@@ -67,12 +68,15 @@ func _input(event: InputEvent) -> void:
         #get_viewport().set_input_as_handled()
     if event.is_action_pressed("mask_face_accept"):
         if is_move == false && is_fall == true:
+            Events.emit_signal("request_play_sound", "StickSound")
             is_move = false
             is_fall = false
             _current_second = fall_delta_second + 1
             record_position_list.append(Vector3(current_face_res_type, current_fall_scene.position.x, current_fall_scene.position.y))
             if current_face_res != null:
                 dialog_text.text = current_face_res.dialog
+            if current_face_btn != null:
+                current_face_btn.set_interactable(false)
             is_mask = false
         #get_viewport().set_input_as_handled()
 
@@ -118,12 +122,13 @@ func create_decor_show():
         decor_list.add_child(face_tmp)
         face_tmp.setup(face_res, random_face_item_pic[id], id)
         id += 1
-        face_tmp.pressed.connect(on_face_pressed.bind(face_res))
+        face_tmp.pressed.connect(on_face_pressed.bind(face_res, face_tmp))
 
-func on_face_pressed(face_res: FaceRes):
+func on_face_pressed(face_res: FaceRes, face_btn: FaceItemBtn):
     if is_mask:
         return
     _add_texture(face_res)
+    current_face_btn = face_btn
     is_mask = true
 
 
@@ -215,6 +220,7 @@ func _ready() -> void:
 
 
 func _on_confirm_pressed() -> void:
+    Events.emit_signal("request_play_sound", "ClickSound")
     if cur_state == FaceRes.FACE_TYPE.size() - 1:
         return
 

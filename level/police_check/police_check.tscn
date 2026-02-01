@@ -2,7 +2,13 @@
 
 [ext_resource type="Script" uid="uid://ctl8tm4wvhmtt" path="res://level/police_check/popup.gd" id="1_bap7t"]
 [ext_resource type="Script" uid="uid://b3e5mg3j2yjek" path="res://level/police_check/police_check.gd" id="1_j20kk"]
-[ext_resource type="Resource" uid="uid://bk62b1vj1n57u" path="res://resource/resource_group/sound_answer_res_group.tres" id="2_psa0k"]
+[ext_resource type="Texture2D" uid="uid://wf7pc1ybuaha" path="res://asset/police_check_ui/bg.png" id="2_6slqj"]
+[ext_resource type="Resource" uid="uid://dear7hsvjvsps" path="res://resource/resource_group/sound_answer_res_group.tres" id="2_psa0k"]
+[ext_resource type="Texture2D" uid="uid://ds8q23xigt7p0" path="res://asset/police_check_ui/police_happy.png" id="3_dge4q"]
+[ext_resource type="Texture2D" uid="uid://15cje4y21dkf" path="res://asset/police_check_ui/police_scare.png" id="4_wjxqw"]
+[ext_resource type="Texture2D" uid="uid://bppducehg77c3" path="res://asset/police_check_ui/police_smile.png" id="5_7rmy8"]
+[ext_resource type="Texture2D" uid="uid://bfuq428tifatv" path="res://asset/police_check_ui/police_yell.png" id="6_xbb65"]
+[ext_resource type="Texture2D" uid="uid://djvl20yqq0dyc" path="res://asset/police_check_ui/dialog.png" id="7_g7bst"]
 
 [node name="PoliceCheck" type="Control" unique_id=940163699]
 layout_mode = 3
@@ -13,86 +19,146 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j20kk")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2022749241]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
-
-[node name="Window" type="Control" parent="MarginContainer" unique_id=732536969]
-custom_minimum_size = Vector2(800, 1000)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-
-[node name="Bg" type="ColorRect" parent="MarginContainer/Window" unique_id=292986694]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Police" type="ColorRect" parent="MarginContainer/Window" unique_id=1913039100]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -227.0
-offset_top = -829.0
-offset_right = 225.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0.44291106, 0.44291067, 0.44291073, 1)
-
-[node name="Dialog" type="Control" parent="MarginContainer" unique_id=1618107016]
-custom_minimum_size = Vector2(1800, 300)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/Dialog" unique_id=137376750]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.15487596, 0.154876, 0.15487596, 1)
-
-[node name="Label" type="Label" parent="MarginContainer/Dialog" unique_id=1236548895]
+[node name="Bg" type="TextureRect" parent="." unique_id=413881506]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -22.5
-offset_right = 20.0
-offset_bottom = 22.5
+offset_left = -800.0
+offset_top = -600.0
+offset_right = 800.0
+offset_bottom = 600.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "警察问话"
+texture = ExtResource("2_6slqj")
+
+[node name="Police" type="Control" parent="." unique_id=1826362959]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = -382.0
+offset_right = 47.0
+offset_bottom = -342.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Happy" type="TextureRect" parent="Police" unique_id=1568747987]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.0
+offset_top = -211.0
+offset_right = 181.0
+offset_bottom = 211.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dge4q")
+
+[node name="Scare" type="TextureRect" parent="Police" unique_id=1691074732]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.0
+offset_top = -211.0
+offset_right = 181.0
+offset_bottom = 211.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_wjxqw")
+
+[node name="Smile" type="TextureRect" parent="Police" unique_id=1549419282]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.0
+offset_top = -208.0
+offset_right = 181.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_7rmy8")
+
+[node name="Yell" type="TextureRect" parent="Police" unique_id=1684141537]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.0
+offset_top = -211.0
+offset_right = 181.0
+offset_bottom = 211.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_xbb65")
+
+[node name="Dialog" type="Control" parent="." unique_id=1282499016]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 422.0
+offset_top = -497.0
+offset_right = 462.0
+offset_bottom = -457.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Dialog" unique_id=1895465408]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -227.0
+offset_top = -98.5
+offset_right = 227.0
+offset_bottom = 98.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_g7bst")
+
+[node name="Label" type="Label" parent="Dialog" unique_id=1927421449]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.0
+offset_top = -81.0
+offset_right = 192.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "欢迎来到澳门航空"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CheckStageHint" type="Label" parent="MarginContainer" unique_id=878515604]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-text = "当前检查环节"
-horizontal_alignment = 1
-
 [node name="Popup" type="Control" parent="." unique_id=2055397236]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

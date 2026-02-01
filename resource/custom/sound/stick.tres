@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundRes" format=3 uid="uid://dnfekpsumpwym"]
+
+[ext_resource type="Script" uid="uid://cvtd0w4c4xsno" path="res://resource/custom/sound/sound_res.gd" id="1_bd2pb"]
+[ext_resource type="AudioStream" uid="uid://4uhg0180nkvi" path="res://asset/sound/贴上.mp3" id="2_1qo3l"]
+
+[resource]
+script = ExtResource("1_bd2pb")
+sound_name = &"StickSound"
+stream = ExtResource("2_1qo3l")
+metadata/_custom_type_script = "uid://cvtd0w4c4xsno"
