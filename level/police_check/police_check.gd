@@ -17,22 +17,74 @@ extends Control
 @onready var smile: TextureRect = $Police/Smile
 @onready var yell: TextureRect = $Police/Yell
 
+signal dialog_pack_finished(pack_id: String)
 
-var dialog_lines: Array[String] = [
+
+var _pack_a_lines: Array[String] = [
     "欢迎来到澳门航空",
     "请出示你的证件",
     "让我核对你的信息"
 ]
-var dialog_actions: Array[StringName] = [
+var _pack_a_actions: Array[StringName] = [
     StringName(),
     &"on_dialog_finished",
     &"on_check_start",
 ]
-var dialog_durations: Array[float] = [
+var _pack_a_durations: Array[float] = [
     2.0,
     2.0,
     2.0
 ]
+
+var dialog_lines: Array[String] = []
+var dialog_actions: Array[StringName] = []
+var dialog_durations: Array[float] = []
+
+## 成功情况下播放的内容
+@export var dialog_pack_b_lines: Array[String] = [
+    "姓名、年龄、照片......",
+    "照片跟您不太相似",
+    "不过我懂，总会美颜照片嘛",
+    "让我再看看，没什么问题",
+    "欢迎来到澳门星",
+    "祝您度过一段毕生难忘的时光！"
+]
+@export var dialog_pack_b_actions: Array[StringName] = [
+    StringName(),
+    StringName(),
+    &"on_check_ok",
+]
+@export var dialog_pack_b_durations: Array[float] = [
+    2.0,
+    2.0,
+    2.0
+]
+
+@export var dialog_pack_c_lines: Array[String] = [
+    "姓名、年龄、照片......",
+    "照片跟您不太相似",
+    "喂！你这完全不对吧!",
+    "这根本不是澳门星人的样子!",
+    "保安！！这里有异星人！！！"
+]
+@export var dialog_pack_c_actions: Array[StringName] = [
+    StringName(),
+    StringName(),
+    &"on_check_wrong",
+    StringName(),
+    &"on_story_bad",
+]
+@export var dialog_pack_c_durations: Array[float] = [
+    2.0,
+    2.0,
+    2.0,
+    2.0,
+    2.0
+]
+
+@export var dialog_pack_d_lines: Array[String] = []
+@export var dialog_pack_d_actions: Array[StringName] = []
+@export var dialog_pack_d_durations: Array[float] = []
 
 @export var check_start_pos: Vector2
 @export var check_end_pos: Vector2
@@ -43,10 +95,16 @@ var _type_timer: Timer
 var _type_line: String = ""
 var _type_pos: int = 0
 var _dialog_duration_pending: float = 0.0
+var _current_pack_id: String = ""
+var _flow_queue: Array[String] = []
 
 @export var type_char_interval: float = 0.05
 
 enum PoliceMood {Happy, Scare, Smile, Yell}
+const PACK_A := "packA"
+const PACK_B := "packB"
+const PACK_C := "packC"
+const PACK_D := "packD"
 
 
 func _ready() -> void:
@@ -63,7 +121,8 @@ func _ready() -> void:
     _type_timer.one_shot = false
     add_child(_type_timer)
     _type_timer.timeout.connect(_on_type_tick)
-    _advance_dialog()
+    if not dialog_pack_finished.is_connected(_on_dialog_pack_finished):
+        dialog_pack_finished.connect(_on_dialog_pack_finished)
 
     var player_face_data: PackedVector3Array = Save.get_position_data()
 
@@ -135,10 +194,12 @@ func _ready() -> void:
                     is_all_valid = false
 
     print(is_all_valid)
+    play_full_flow(is_all_valid)
 
 func _advance_dialog() -> void:
     _dialog_index += 1
     if _dialog_index >= dialog_lines.size():
+        dialog_pack_finished.emit(_current_pack_id)
         return
     _type_line = dialog_lines[_dialog_index]
     _type_pos = 0
@@ -188,8 +249,6 @@ func on_check_start() -> void:
     tween.tween_property(hand, "position", check_start_pos, 2)
     tween.tween_callback(func(): hand.visible = false)
 
-    ##播放检查结果
-
 
 func _play_passport_tween() -> void:
     var base_scale: Vector2 = pass_port.scale
@@ -219,3 +278,79 @@ func set_police_mood(mood: PoliceMood) -> void:
             police_smile.visible = true
         PoliceMood.Yell:
             police_yell.visible = true
+
+func play_full_flow(is_success: bool) -> void:
+    _flow_queue.clear()
+    _flow_queue.append(PACK_A)
+    _flow_queue.append(PACK_B if is_success else PACK_C)
+    _flow_queue.append(PACK_D)
+    _play_next_pack()
+
+func _play_next_pack() -> void:
+    if _flow_queue.is_empty():
+        return
+    var pack_id = _flow_queue.pop_front()
+    _play_dialog_pack(pack_id)
+
+func _play_dialog_pack(pack_id: String) -> void:
+    var lines: Array[String] = []
+    var actions: Array[StringName] = []
+    var durations: Array[float] = []
+
+    match pack_id:
+        PACK_A:
+            lines = _pack_a_lines
+            actions = _pack_a_actions
+            durations = _pack_a_durations
+        PACK_B:
+            lines = dialog_pack_b_lines
+            actions = dialog_pack_b_actions
+            durations = dialog_pack_b_durations
+        PACK_C:
+            lines = dialog_pack_c_lines
+            actions = dialog_pack_c_actions
+            durations = dialog_pack_c_durations
+        PACK_D:
+            lines = dialog_pack_d_lines
+            actions = dialog_pack_d_actions
+            durations = dialog_pack_d_durations
+        _:
+            dialog_pack_finished.emit(pack_id)
+            return
+
+    lines = lines.duplicate()
+    actions = actions.duplicate()
+    durations = durations.duplicate()
+
+    if durations.size() != lines.size():
+        durations.clear()
+        durations.resize(lines.size())
+        for i in range(lines.size()):
+            durations[i] = 2.0
+
+    if actions.size() < lines.size():
+        actions.resize(lines.size())
+
+    dialog_lines = lines
+    dialog_actions = actions
+    dialog_durations = durations
+
+    _current_pack_id = pack_id
+    _dialog_index = -1
+    _advance_dialog()
+
+func _on_dialog_pack_finished(_pack_id: String) -> void:
+    _play_next_pack()
+    
+
+func on_check_ok():
+    set_police_mood(PoliceMood.Happy)
+    
+func on_check_wrong():
+    set_police_mood(PoliceMood.Scare)
+    
+    
+    
+## 游戏失败，被遣返
+func on_story_bad():
+    pass
