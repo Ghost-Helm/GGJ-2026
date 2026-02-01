@@ -6,6 +6,17 @@ extends Control
 @onready var passport_photo: TextureRect = $PassPort/Photo
 @onready var pass_port: Control = $PassPort
 @onready var hand: Control = $Hand
+@onready var police_happy: TextureRect = $Police/Happy
+@onready var police_scare: TextureRect = $Police/Scare
+@onready var police_smile: TextureRect = $Police/Smile
+@onready var police_yell: TextureRect = $Police/Yell
+
+## 所有的表情
+@onready var happy: TextureRect = $Police/Happy
+@onready var scare: TextureRect = $Police/Scare
+@onready var smile: TextureRect = $Police/Smile
+@onready var yell: TextureRect = $Police/Yell
+
 
 var dialog_lines: Array[String] = [
     "欢迎来到澳门航空",
@@ -28,6 +39,8 @@ var dialog_durations: Array[float] = [
 
 var _dialog_index: int = -1
 var _dialog_timer: Timer
+
+enum PoliceMood { Happy, Scare, Smile, Yell }
 
 
 func _ready() -> void:
@@ -160,3 +173,20 @@ func _play_passport_tween() -> void:
     tween.set_ease(Tween.EASE_OUT)
     tween.tween_property(pass_port, "scale", base_scale, 0.25)
     tween.parallel().tween_property(pass_port, "modulate", Color(1, 1, 1, 1), 0.5)
+
+
+func set_police_mood(mood: PoliceMood) -> void:
+    police_happy.visible = false
+    police_scare.visible = false
+    police_smile.visible = false
+    police_yell.visible = false
+
+    match mood:
+        PoliceMood.Happy:
+            police_happy.visible = true
+        PoliceMood.Scare:
+            police_scare.visible = true
+        PoliceMood.Smile:
+            police_smile.visible = true
+        PoliceMood.Yell:
+            police_yell.visible = true
