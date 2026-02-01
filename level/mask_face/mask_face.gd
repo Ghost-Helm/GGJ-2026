@@ -48,6 +48,8 @@ func _add_texture(face_res: FaceRes) -> void:
 
     fall_speed_tmp = fall_speed + randi_range(0, 20)
 
+    Events.emit_signal("request_play_sound", "ClickSound")
+
 
 var current_fall_scene: FallMask
 var current_face_res_type: FaceRes.FACE_TYPE
@@ -65,6 +67,14 @@ func _input(event: InputEvent) -> void:
         if is_move == true && is_fall == false:
             is_move = false
             is_fall = true
+            var index: int = randi_range(0, 3)
+            var sound_name: StringName
+            match index:
+                0: sound_name = "Fall1"
+                1: sound_name = "Fall2"
+                2: sound_name = "Fall3"
+                3: sound_name = "Fall4"
+            Events.emit_signal("request_play_sound", sound_name)
         #get_viewport().set_input_as_handled()
     if event.is_action_pressed("mask_face_accept"):
         if is_move == false && is_fall == true:
@@ -75,6 +85,7 @@ func _input(event: InputEvent) -> void:
             record_position_list.append(Vector3(current_face_res_type, current_fall_scene.position.x, current_fall_scene.position.y))
             if current_face_res != null:
                 dialog_text.text = current_face_res.dialog
+                Events.emit_signal("request_play_sound", "Type")
             if current_face_btn != null:
                 current_face_btn.set_interactable(false)
             is_mask = false
@@ -215,12 +226,13 @@ func _ready() -> void:
     create_decor_show()
 
 
-@onready var photo: ColorRect = $MarginContainer/HBoxContainer/People/Face/Photo
-@onready var dialog: Control = $MarginContainer/HBoxContainer/People/Dialog
+#@onready var photo: ColorRect = $MarginContainer/HBoxContainer/People/Face/Photo
+#@onready var dialog: Control = $MarginContainer/HBoxContainer/People/Dialog
+#@onready var dialog: Control = $People/Dialog
 
 
 func _on_confirm_pressed() -> void:
-    Events.emit_signal("request_play_sound", "ClickSound")
+    Events.emit_signal("request_play_sound", "NextFace")
     if cur_state == FaceRes.FACE_TYPE.size() - 1:
         return
 
@@ -256,4 +268,5 @@ func update_title_icon():
 
 
 func _on_random_pressed() -> void:
+    Events.emit_signal("request_play_sound", "RandomSound")
     create_decor_show()

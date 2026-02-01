@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundRes" format=3 uid="uid://c2gqvy1so4b6k"]
+
+[ext_resource type="Script" uid="uid://cvtd0w4c4xsno" path="res://resource/custom/sound/sound_res.gd" id="1_d82wq"]
+[ext_resource type="AudioStream" uid="uid://d4adnces61kcf" path="res://asset/sound/打字音效（短）.mp3" id="2_7unp2"]
+
+[resource]
+script = ExtResource("1_d82wq")
+sound_name = &"Type"
+stream = ExtResource("2_7unp2")
+metadata/_custom_type_script = "uid://cvtd0w4c4xsno"

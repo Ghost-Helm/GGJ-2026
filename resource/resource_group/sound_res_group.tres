@@ -6,5 +6,5 @@
 script = ExtResource("1_twmao")
 base_folder = "res://resource/custom/sound"
 includes = Array[String](["*.tres"])
-paths = Array[String](["res://resource/custom/sound/click.tres", "res://resource/custom/sound/fake_sign.tres", "res://resource/custom/sound/random.tres", "res://resource/custom/sound/sign.tres", "res://resource/custom/sound/stick.tres", "res://resource/custom/sound/take_photo.tres"])
+paths = Array[String](["res://resource/custom/sound/click.tres", "res://resource/custom/sound/fake_sign.tres", "res://resource/custom/sound/fall_1.tres", "res://resource/custom/sound/fall_2.tres", "res://resource/custom/sound/fall_3.tres", "res://resource/custom/sound/fall_4.tres", "res://resource/custom/sound/next_face.tres", "res://resource/custom/sound/random.tres", "res://resource/custom/sound/sign.tres", "res://resource/custom/sound/stick.tres", "res://resource/custom/sound/take_photo.tres", "res://resource/custom/sound/type.tres"])
 metadata/_custom_type_script = "uid://fulb7hvwdkex"

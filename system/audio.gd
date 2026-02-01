@@ -15,8 +15,13 @@ func _play_music(music_name) -> void:
 
 
 func _play_sound(sound_name: StringName) -> void:
+    var sound_player: AudioStreamPlayer = AudioStreamPlayer.new()
+    self.add_child(sound_player)
+    sound_player.name = "Sound"
     sound_player.stream = _sound_res_map[sound_name]
     sound_player.play()
+    await sound_player.finished
+    sound_player.queue_free()
 
 
 func _ready() -> void:
@@ -35,7 +40,7 @@ func _ready() -> void:
 @export var music_res_group: ResourceGroup
 @export var sound_res_group: ResourceGroup
 @export var music_player: AudioStreamPlayer
-@export var sound_player: AudioStreamPlayer
+#@export var sound_player: AudioStreamPlayer
 
 var _music_res_map: Dictionary
 var _sound_res_map: Dictionary

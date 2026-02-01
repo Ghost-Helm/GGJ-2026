@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundRes" format=3 uid="uid://dtt6flkp6eqrh"]
+
+[ext_resource type="Script" uid="uid://cvtd0w4c4xsno" path="res://resource/custom/sound/sound_res.gd" id="1_qeyed"]
+[ext_resource type="AudioStream" uid="uid://yibu8y7r7j65" path="res://asset/sound/下落3.mp3" id="2_726wt"]
+
+[resource]
+script = ExtResource("1_qeyed")
+sound_name = &"Fall3"
+stream = ExtResource("2_726wt")
+metadata/_custom_type_script = "uid://cvtd0w4c4xsno"
