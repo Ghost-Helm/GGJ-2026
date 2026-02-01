@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundRes" format=3 uid="uid://caf7soybcbjx0"]
+
+[ext_resource type="Script" uid="uid://cvtd0w4c4xsno" path="res://resource/custom/sound/sound_res.gd" id="1_q3rir"]
+[ext_resource type="AudioStream" uid="uid://dmdo0bohb78o3" path="res://asset/sound/签名.mp3" id="2_w0oej"]
+
+[resource]
+script = ExtResource("1_q3rir")
+sound_name = &"FakeSignSound"
+stream = ExtResource("2_w0oej")
+metadata/_custom_type_script = "uid://cvtd0w4c4xsno"

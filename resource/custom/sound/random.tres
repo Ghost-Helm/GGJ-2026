@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundRes" format=3 uid="uid://catfn7u1x3gac"]
+
+[ext_resource type="Script" uid="uid://cvtd0w4c4xsno" path="res://resource/custom/sound/sound_res.gd" id="1_4512h"]
+[ext_resource type="AudioStream" uid="uid://c72pj38iw1lrc" path="res://asset/sound/刷新.mp3" id="2_5xmem"]
+
+[resource]
+script = ExtResource("1_4512h")
+sound_name = &"RandomSound"
+stream = ExtResource("2_5xmem")
+metadata/_custom_type_script = "uid://cvtd0w4c4xsno"
