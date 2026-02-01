@@ -25,3 +25,4 @@ func _apply_press_effect(is_pressed: bool) -> void:
     else:
         pivot_offset = size * 0.5
         scale = _btn_scale * (0.95 if is_pressed else 1.0)
+    Events.emit_signal("request_play_sound", "ClickSound")
