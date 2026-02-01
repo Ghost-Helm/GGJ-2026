@@ -102,8 +102,19 @@ func _physics_process(delta: float) -> void:
     elif is_fall && _current_second > fall_delta_second:
         current_fall_scene.position.y += fall_speed_tmp
         _current_second = 0
+        if current_fall_scene.position.y > out_of_area:
+            is_move = false
+            is_fall = false
+            _current_second = fall_delta_second + 1
+            is_mask = false
+            current_fall_scene.queue_free()
+
+            current_face_btn.set_interactable(false)
+
     _current_second += delta
 
+
+@export var out_of_area: float
 
 @export var face_res_group: ResourceGroup
 @export var target_count: int

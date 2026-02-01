@@ -51,6 +51,7 @@ face_item_btn = ExtResource("2_g51uk")
 fall_texture = ExtResource("3_kykf2")
 fall_speed = 20.0
 fall_delta_second = 0.1
+out_of_area = 1000.0
 face_res_group = ExtResource("3_rprlw")
 target_count = 3
 
