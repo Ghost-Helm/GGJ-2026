@@ -4,7 +4,6 @@ extends Control
 @onready var mask_eye_brow_btn: Button = $VBoxContainer/MaskStep/List/MaskEyeBrowBtn
 @onready var mask_nose_btn: Button = $VBoxContainer/MaskStep/List/MaskNoseBtn
 @onready var mask_mouse_btn: Button = $VBoxContainer/MaskStep/List/MaskMouseBtn
-@onready var mask_other_btn: Button = $VBoxContainer/MaskStep/List/MaskOtherBtn
 
 @onready var mask_list: VBoxContainer = $VBoxContainer/MaskStep/List
 
@@ -123,7 +122,6 @@ var _eye_list: Array[FaceRes]
 var _eyebrow_list: Array[FaceRes]
 var _nose_list: Array[FaceRes]
 var _mouse_list: Array[FaceRes]
-var _other_list: Array[FaceRes]
 
 var _last_result: Array[FaceRes]
 
@@ -165,8 +163,6 @@ func get_random_face_res(type: FaceRes.FACE_TYPE) -> Array[FaceRes]:
             target_list = _nose_list
         FaceRes.FACE_TYPE.Mouse:
             target_list = _mouse_list
-        FaceRes.FACE_TYPE.Other:
-            target_list = _other_list
 
     var current_result: Array[FaceRes] = []
     var is_duplicate: bool = true
@@ -220,15 +216,12 @@ func _ready() -> void:
                 _nose_list.append(face_res)
             FaceRes.FACE_TYPE.Mouse:
                 _mouse_list.append(face_res)
-            FaceRes.FACE_TYPE.Other:
-                _other_list.append(face_res)
 
     mask_step = {
         FaceRes.FACE_TYPE.Eye: mask_eye_btn,
         FaceRes.FACE_TYPE.Eyebrow: mask_eye_brow_btn,
         FaceRes.FACE_TYPE.Nose: mask_nose_btn,
         FaceRes.FACE_TYPE.Mouse: mask_mouse_btn,
-        FaceRes.FACE_TYPE.Other: mask_other_btn,
     }
     create_decor_show()
     var cur_button = mask_step[cur_state] as MaskStepBtn

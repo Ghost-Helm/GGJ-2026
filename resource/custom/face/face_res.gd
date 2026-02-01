@@ -1,7 +1,7 @@
 extends Resource
 class_name FaceRes
 
-enum FACE_TYPE{Eye, Eyebrow, Nose, Mouse, Other}
+enum FACE_TYPE{Eye, Eyebrow, Nose, Mouse}
 enum EMOTION_TYPE{Happy, Sad, Nothing}
 
 @export var face_name: StringName
