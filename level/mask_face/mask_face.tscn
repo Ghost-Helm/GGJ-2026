@@ -15,10 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://l71daj4talqt" path="res://asset/mask_face_ui/default_hair.png" id="9_3e65y"]
 [ext_resource type="Texture2D" uid="uid://d0lkl5q8fa8il" path="res://asset/img/mask_face.png" id="9_vq7kv"]
 [ext_resource type="Texture2D" uid="uid://emvihkco68gv" path="res://asset/mask_face_ui/dialog_bg.png" id="10_omxrq"]
-[ext_resource type="Texture2D" uid="uid://7sf0sr1ouhvu" path="res://asset/mask_face_ui/dialog_img.png" id="11_3l53b"]
 [ext_resource type="Texture2D" uid="uid://dj7s2ctiehmto" path="res://asset/mask_face_ui/face_item_list.png" id="12_3e65y"]
+[ext_resource type="Texture2D" uid="uid://dngxs3g7t7ogo" path="res://asset/alien_headicon/alienkuangsadhappy.png" id="12_fmfk3"]
 [ext_resource type="Texture2D" uid="uid://bjw6476d065wi" path="res://asset/mask_face_ui/eye_title.png" id="13_3l53b"]
 [ext_resource type="Texture2D" uid="uid://c4011jqf1bqws" path="res://asset/mask_face_ui/eyebrow_icon.png" id="13_cyk7u"]
+[ext_resource type="Texture2D" uid="uid://b7nr81voahipd" path="res://asset/alien_headicon/alienkuangsad.png" id="13_f6yd4"]
 [ext_resource type="Texture2D" uid="uid://c6du04qd45ohi" path="res://asset/mask_face_ui/random.png" id="14_828kl"]
 [ext_resource type="Texture2D" uid="uid://dmkteyduwkjqi" path="res://asset/mask_face_ui/nose_icon.png" id="14_x0liv"]
 [ext_resource type="Texture2D" uid="uid://cjhp0kvj3c2vh" path="res://asset/mask_face_ui/other_icon.png" id="15_4wuom"]
@@ -31,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://cfpj4waoirbxu" path="res://asset/mask_face_ui/mouse_do.png" id="19_bwv2a"]
 [ext_resource type="Texture2D" uid="uid://t24g1w1ipnyh" path="res://asset/mask_face_ui/other_title.png" id="21_bwv2a"]
 [ext_resource type="Texture2D" uid="uid://cqnh3cy7767qh" path="res://asset/mask_face_ui/other_do.png" id="21_f784x"]
+[ext_resource type="Texture2D" uid="uid://bwaleshmyvhdp" path="res://asset/alien_headicon/alienkuang.png" id="28_cmht7"]
 [ext_resource type="Texture2D" uid="uid://c6ak4vkwyusrm" path="res://asset/mask_face_ui/next.png" id="31_bwv2a"]
 [ext_resource type="Script" uid="uid://1rvdjge1csvm" path="res://level/mask_face/confirm.gd" id="31_f784x"]
 [ext_resource type="Texture2D" uid="uid://ces3eiqtmcutl" path="res://asset/mask_face_ui/take_photo.png" id="34_4bu3c"]
@@ -51,6 +53,7 @@ face_item_btn = ExtResource("2_g51uk")
 fall_texture = ExtResource("3_kykf2")
 fall_speed = 20.0
 fall_delta_second = 0.1
+emotion_pic = Array[Texture2D]([ExtResource("12_fmfk3"), ExtResource("13_f6yd4"), ExtResource("28_cmht7")])
 out_of_area = 1000.0
 face_res_group = ExtResource("3_rprlw")
 target_count = 3
@@ -250,12 +253,12 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = -10.0
-offset_top = -207.0
-offset_right = 206.0
-offset_bottom = 9.0
+offset_left = -33.0
+offset_top = -314.0
+offset_right = 216.0
+offset_bottom = 22.0
 grow_vertical = 0
-texture = ExtResource("11_3l53b")
+texture = ExtResource("28_cmht7")
 
 [node name="Text" type="Label" parent="People/Dialog" unique_id=585246830]
 layout_mode = 1

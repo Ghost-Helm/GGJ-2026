@@ -84,11 +84,17 @@ func _input(event: InputEvent) -> void:
             record_position_list.append(Vector3(current_face_res_type, current_fall_scene.position.x, current_fall_scene.position.y))
             if current_face_res != null:
                 dialog_text.text = current_face_res.dialog
+                var texture: Texture2D = emotion_pic[current_face_res.emotion]
+                head_icon.texture = texture
                 # Events.emit_signal("request_play_sound", "Type")
             if current_face_btn != null:
                 current_face_btn.set_interactable(false)
             is_mask = false
         #get_viewport().set_input_as_handled()
+
+@onready var head_icon: TextureRect = $People/Dialog/HeadIcon
+
+@export var emotion_pic: Array[Texture2D]
 
 
 func _physics_process(delta: float) -> void:
