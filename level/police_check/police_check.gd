@@ -198,6 +198,7 @@ func _ready() -> void:
 
 func _advance_dialog() -> void:
     _dialog_index += 1
+    Events.emit_signal("request_play_sound", "TypeShort")
     if _dialog_index >= dialog_lines.size():
         dialog_pack_finished.emit(_current_pack_id)
         return
@@ -342,16 +343,15 @@ func _play_dialog_pack(pack_id: String) -> void:
 
 func _on_dialog_pack_finished(_pack_id: String) -> void:
     _play_next_pack()
-    
+
 
 func on_check_ok():
     set_police_mood(PoliceMood.Happy)
-    
+
 func on_check_wrong():
     set_police_mood(PoliceMood.Scare)
-    
-    
-    
+
+
 ## 游戏失败，被遣返
 func on_story_bad():
     pass
