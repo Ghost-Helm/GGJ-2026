@@ -251,7 +251,11 @@ func _on_confirm_pressed() -> void:
     _update_action_buttons()
 
 
+@onready var dialog: Control = $People/Dialog
+
+
 func _on_take_photo_pressed() -> void:
+    dialog.visible = false
     await RenderingServer.frame_post_draw
     Save.save_position_data(record_position_list)
     Save.save_image(get_viewport().get_texture().get_image())
