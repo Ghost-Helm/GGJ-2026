@@ -85,7 +85,7 @@ func _input(event: InputEvent) -> void:
             record_position_list.append(Vector3(current_face_res_type, current_fall_scene.position.x, current_fall_scene.position.y))
             if current_face_res != null:
                 dialog_text.text = current_face_res.dialog
-                Events.emit_signal("request_play_sound", "Type")
+                # Events.emit_signal("request_play_sound", "Type")
             if current_face_btn != null:
                 current_face_btn.set_interactable(false)
             is_mask = false
