@@ -17,6 +17,9 @@ extends Control
 @onready var smile: TextureRect = $Police/Smile
 @onready var yell: TextureRect = $Police/Yell
 
+@onready var real_photo: TextureRect = $RealPhoto
+
+
 signal dialog_pack_finished(pack_id: String)
 
 
@@ -53,6 +56,9 @@ var dialog_durations: Array[float] = []
     StringName(),
     StringName(),
     &"on_check_ok",
+    StringName(),
+    StringName(),
+    &"on_happy_end",
 ]
 @export var dialog_pack_b_durations: Array[float] = [
     2.0,
@@ -97,6 +103,8 @@ var _type_pos: int = 0
 var _dialog_duration_pending: float = 0.0
 var _current_pack_id: String = ""
 var _flow_queue: Array[String] = []
+var _scare_shake_tween: Tween
+var _scare_base_pos: Vector2
 
 @export var type_char_interval: float = 0.05
 
@@ -123,6 +131,8 @@ func _ready() -> void:
     _type_timer.timeout.connect(_on_type_tick)
     if not dialog_pack_finished.is_connected(_on_dialog_pack_finished):
         dialog_pack_finished.connect(_on_dialog_pack_finished)
+
+    _scare_base_pos = police_scare.position
 
     var player_face_data: PackedVector3Array = Save.get_position_data()
 
@@ -262,6 +272,9 @@ func _play_passport_tween() -> void:
     tween.set_ease(Tween.EASE_OUT)
     tween.tween_property(pass_port, "scale", base_scale, 0.25)
     tween.parallel().tween_property(pass_port, "modulate", Color(1, 1, 1, 1), 0.5)
+    
+    await tween.finished
+    real_photo.visible = true
 
 
 func set_police_mood(mood: PoliceMood) -> void:
@@ -269,16 +282,36 @@ func set_police_mood(mood: PoliceMood) -> void:
     police_scare.visible = false
     police_smile.visible = false
     police_yell.visible = false
+    _stop_scare_shake()
 
     match mood:
         PoliceMood.Happy:
             police_happy.visible = true
         PoliceMood.Scare:
             police_scare.visible = true
+            _start_scare_shake()
         PoliceMood.Smile:
             police_smile.visible = true
         PoliceMood.Yell:
             police_yell.visible = true
+
+func _start_scare_shake() -> void:
+    _stop_scare_shake()
+    police_scare.position = _scare_base_pos
+    _scare_shake_tween = create_tween()
+    _scare_shake_tween.set_loops()
+    _scare_shake_tween.set_trans(Tween.TRANS_SINE)
+    _scare_shake_tween.set_ease(Tween.EASE_IN_OUT)
+    _scare_shake_tween.tween_property(police_scare, "position", _scare_base_pos + Vector2(6, 0), 0.04)
+    _scare_shake_tween.tween_property(police_scare, "position", _scare_base_pos + Vector2(-6, 0), 0.04)
+    _scare_shake_tween.tween_property(police_scare, "position", _scare_base_pos + Vector2(0, 6), 0.04)
+    _scare_shake_tween.tween_property(police_scare, "position", _scare_base_pos + Vector2(0, -6), 0.04)
+
+func _stop_scare_shake() -> void:
+    if _scare_shake_tween != null:
+        _scare_shake_tween.kill()
+        _scare_shake_tween = null
+    police_scare.position = _scare_base_pos
 
 func play_full_flow(is_success: bool) -> void:
     _flow_queue.clear()
@@ -354,4 +387,7 @@ func on_check_wrong():
     
 ## 游戏失败，被遣返
 func on_story_bad():
-    pass
+    Events.emit_signal("request_change_level", "BadEnd")
+    
+func on_happy_end():
+    Events.emit_signal("request_change_level", "HappyEnd")

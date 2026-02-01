@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ctri6tf0ugfvd" path="res://asset/police_check_ui/hand.png" id="11_7rmy8"]
 [ext_resource type="Texture2D" uid="uid://qadyixigeq1w" path="res://asset/police_check_ui/ok.png" id="12_g7bst"]
 [ext_resource type="Texture2D" uid="uid://civxif20qqvul" path="res://asset/police_check_ui/wrong.png" id="13_yqy0k"]
+[ext_resource type="Texture2D" uid="uid://b4ucn3u35i6xn" path="res://asset/img/sister_photo.png" id="14_yqy0k"]
 
 [node name="PoliceCheck" type="Control" unique_id=940163699]
 layout_mode = 3
@@ -262,6 +263,16 @@ offset_right = 113.0
 offset_bottom = -179.0
 rotation = 0.08726646
 scale = Vector2(0.48, 0.48)
+
+[node name="RealPhoto" type="TextureRect" parent="." unique_id=1908944388]
+visible = false
+layout_mode = 0
+offset_left = 983.0
+offset_top = 665.0
+offset_right = 1452.0
+offset_bottom = 1324.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("14_yqy0k")
 
 [node name="Hand" type="Control" parent="." unique_id=1848053019]
 visible = false

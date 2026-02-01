@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://df7cyhxp1oytx" path="res://asset/mask_face_ui/eyebrow_do.png" id="15_h522x"]
 [ext_resource type="Texture2D" uid="uid://176xqbi3ltbn" path="res://asset/mask_face_ui/nose_do.png" id="17_2ongo"]
 [ext_resource type="Texture2D" uid="uid://c84w45jwdwj61" path="res://asset/mask_face_ui/nose_title.png" id="17_4uala"]
+[ext_resource type="Texture2D" uid="uid://b4ucn3u35i6xn" path="res://asset/img/sister_photo.png" id="18_f6yd4"]
 [ext_resource type="Texture2D" uid="uid://mwwved4wlbm1" path="res://asset/mask_face_ui/mouse_icon.png" id="18_h522x"]
 [ext_resource type="Texture2D" uid="uid://to8mrfnwig5c" path="res://asset/mask_face_ui/mouse_title.png" id="19_2ongo"]
 [ext_resource type="Texture2D" uid="uid://cfpj4waoirbxu" path="res://asset/mask_face_ui/mouse_do.png" id="19_bwv2a"]
@@ -36,8 +37,8 @@
 [ext_resource type="Texture2D" uid="uid://c6ak4vkwyusrm" path="res://asset/mask_face_ui/next.png" id="31_bwv2a"]
 [ext_resource type="Script" uid="uid://1rvdjge1csvm" path="res://level/mask_face/confirm.gd" id="31_f784x"]
 [ext_resource type="Texture2D" uid="uid://ces3eiqtmcutl" path="res://asset/mask_face_ui/take_photo.png" id="34_4bu3c"]
-[ext_resource type="Script" path="res://level/mask_face/take_photo.gd" id="34_cmht7"]
-[ext_resource type="Script" path="res://level/mask_face/random.gd" id="random_script"]
+[ext_resource type="Script" uid="uid://duamn24j60rh8" path="res://level/mask_face/take_photo.gd" id="34_cmht7"]
+[ext_resource type="Script" uid="uid://tii0xlff7wi6" path="res://level/mask_face/random.gd" id="random_script"]
 
 [node name="MaskFace" type="Control" unique_id=521831287]
 layout_mode = 3
@@ -83,6 +84,15 @@ alignment = 1
 [node name="TargetPhoto" type="TextureRect" parent="VBoxContainer" unique_id=570150244]
 layout_mode = 2
 texture = ExtResource("5_gyl3a")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TargetPhoto" unique_id=1942555995]
+layout_mode = 0
+offset_left = 13.999999
+offset_top = 34.0
+offset_right = 483.0
+offset_bottom = 693.0
+scale = Vector2(0.38, 0.38)
+texture = ExtResource("18_f6yd4")
 
 [node name="MaskStep" type="Control" parent="VBoxContainer" unique_id=273814600]
 custom_minimum_size = Vector2(196, 738)

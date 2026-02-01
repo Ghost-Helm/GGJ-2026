@@ -12,7 +12,7 @@ func _ready() -> void:
     _build_play_list()
     _prepare_nodes()
     _play_sequence()
-    Events.emit_signal("request_play_sound", "HappyEndMusic")
+    Events.emit_signal("request_play_music", "HappyEndMusic")
 
 
 func _build_play_list() -> void:
