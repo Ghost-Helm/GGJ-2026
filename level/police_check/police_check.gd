@@ -236,6 +236,7 @@ func _fire_dialog_action(index: int) -> void:
 func on_dialog_finished() -> void:
     ##写一个动画，推入护照显示
     pass_port.visible = true
+    Events.emit_signal("request_play_sound", "Passport")
     _play_passport_tween()
 
 func on_check_start() -> void:

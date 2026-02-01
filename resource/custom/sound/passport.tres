@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundRes" format=3 uid="uid://blcmmbiigumaw"]
+
+[ext_resource type="Script" uid="uid://cvtd0w4c4xsno" path="res://resource/custom/sound/sound_res.gd" id="1_a3c8e"]
+[ext_resource type="AudioStream" uid="uid://630eo8b3trbq" path="res://asset/sound/递上护照、漫画格子出现.mp3" id="2_5tm2w"]
+
+[resource]
+script = ExtResource("1_a3c8e")
+sound_name = &"Passport"
+stream = ExtResource("2_5tm2w")
+metadata/_custom_type_script = "uid://cvtd0w4c4xsno"
