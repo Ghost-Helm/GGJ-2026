@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://dn1cryesw88bx" path="res://asset/mask_face_ui/target_photo.png" id="5_gyl3a"]
 [ext_resource type="Texture2D" uid="uid://qcegs8g1103g" path="res://asset/mask_face_ui/mask_list_bg.png" id="6_y10jv"]
 [ext_resource type="Texture2D" uid="uid://kwqte1yc6sbx" path="res://asset/mask_face_ui/photo_bg.png" id="8_bbqle"]
-[ext_resource type="Texture2D" uid="uid://l71daj4talqt" path="res://asset/mask_face_ui/default_hair.png" id="9_3e65y"]
 [ext_resource type="Texture2D" uid="uid://d0lkl5q8fa8il" path="res://asset/img/mask_face.png" id="9_vq7kv"]
 [ext_resource type="Texture2D" uid="uid://emvihkco68gv" path="res://asset/mask_face_ui/dialog_bg.png" id="10_omxrq"]
 [ext_resource type="Texture2D" uid="uid://dj7s2ctiehmto" path="res://asset/mask_face_ui/face_item_list.png" id="12_3e65y"]
@@ -34,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://t24g1w1ipnyh" path="res://asset/mask_face_ui/other_title.png" id="21_bwv2a"]
 [ext_resource type="Texture2D" uid="uid://cqnh3cy7767qh" path="res://asset/mask_face_ui/other_do.png" id="21_f784x"]
 [ext_resource type="Texture2D" uid="uid://bwaleshmyvhdp" path="res://asset/alien_headicon/alienkuang.png" id="28_cmht7"]
+[ext_resource type="Texture2D" uid="uid://dy4js6yenvgiu" path="res://asset/img/new.png" id="30_f6yd4"]
 [ext_resource type="Texture2D" uid="uid://c6ak4vkwyusrm" path="res://asset/mask_face_ui/next.png" id="31_bwv2a"]
 [ext_resource type="Script" uid="uid://1rvdjge1csvm" path="res://level/mask_face/confirm.gd" id="31_f784x"]
 [ext_resource type="Texture2D" uid="uid://ces3eiqtmcutl" path="res://asset/mask_face_ui/take_photo.png" id="34_4bu3c"]
@@ -212,12 +212,19 @@ offset_bottom = 40.0
 texture = ExtResource("8_bbqle")
 
 [node name="VacantFace" type="TextureRect" parent="People/Face" unique_id=2033950817]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 6.0
-offset_right = 717.0
-offset_bottom = 1006.0
-texture = ExtResource("9_3e65y")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -639.0
+offset_top = -606.0
+offset_right = 961.0
+offset_bottom = 594.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("30_f6yd4")
 
 [node name="FaceItem" type="Control" parent="People/Face" unique_id=1316933647]
 layout_mode = 1
