@@ -31,6 +31,11 @@
 [ext_resource type="Texture2D" uid="uid://cfpj4waoirbxu" path="res://asset/mask_face_ui/mouse_do.png" id="19_bwv2a"]
 [ext_resource type="Texture2D" uid="uid://t24g1w1ipnyh" path="res://asset/mask_face_ui/other_title.png" id="21_bwv2a"]
 [ext_resource type="Texture2D" uid="uid://cqnh3cy7767qh" path="res://asset/mask_face_ui/other_do.png" id="21_f784x"]
+[ext_resource type="Texture2D" uid="uid://c6ak4vkwyusrm" path="res://asset/mask_face_ui/next.png" id="31_bwv2a"]
+[ext_resource type="Script" uid="uid://1rvdjge1csvm" path="res://level/mask_face/confirm.gd" id="31_f784x"]
+[ext_resource type="Texture2D" uid="uid://ces3eiqtmcutl" path="res://asset/mask_face_ui/take_photo.png" id="34_4bu3c"]
+[ext_resource type="Script" uid="uid://duamn24j60rh8" path="res://level/mask_face/take_photo.gd" id="34_cmht7"]
+[ext_resource type="Script" uid="uid://tii0xlff7wi6" path="res://level/mask_face/random.gd" id="random_script"]
 
 [node name="MaskFace" type="Control" unique_id=521831287]
 layout_mode = 3
@@ -349,6 +354,7 @@ offset_bottom = 110.0
 grow_horizontal = 0
 icon = ExtResource("14_828kl")
 flat = true
+script = ExtResource("random_script")
 
 [node name="Confirm" type="Button" parent="Decor" unique_id=773820119]
 layout_mode = 1
@@ -357,13 +363,93 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -97.0
-offset_top = -64.0
+offset_left = -256.0
+offset_top = -120.0
 offset_right = -25.0
 offset_bottom = -11.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "确认"
+flat = true
+script = ExtResource("31_f784x")
+
+[node name="TextureRect" type="TextureRect" parent="Decor/Confirm" unique_id=2070233205]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.5
+offset_top = -59.0
+offset_right = 130.5
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("31_bwv2a")
+
+[node name="Label" type="Label" parent="Decor/Confirm" unique_id=777501668]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -21.5
+offset_right = 96.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "下一个五官"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TakePhoto" type="Button" parent="Decor" unique_id=1509136136]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = 405.0
+offset_right = 260.0
+offset_bottom = 552.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("34_cmht7")
+
+[node name="TextureRect" type="TextureRect" parent="Decor/TakePhoto" unique_id=1663296666]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = -72.0
+offset_right = 159.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("34_4bu3c")
+
+[node name="Label" type="Label" parent="Decor/TakePhoto" unique_id=779454918]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -14.0
+offset_right = 108.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "拍照！"
 
 [node name="TargetImg" type="TextureRect" parent="." unique_id=426163244]
 visible = false

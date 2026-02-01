@@ -22,6 +22,8 @@ var record_position_list: PackedVector3Array
 @onready var decor_list: VBoxContainer = $Decor/DecorList
 
 @onready var face_item: Control = $People/Face/FaceItem
+@onready var confirm_btn: Button = $Decor/Confirm
+@onready var take_photo_btn: Button = $Decor/TakePhoto
 @export var fall_texture: PackedScene
 @export var initial_height: float
 @export var limit_left: float
@@ -178,6 +180,9 @@ func get_random_face_res(type: FaceRes.FACE_TYPE) -> Array[FaceRes]:
 
 
 func _ready() -> void:
+    take_photo_btn.pressed.connect(_on_take_photo_pressed)
+    _update_action_buttons()
+
     for face_res in face_res_group.load_all():
         match face_res.type:
             FaceRes.FACE_TYPE.Eye:
@@ -211,19 +216,30 @@ func _ready() -> void:
 
 func _on_confirm_pressed() -> void:
     if cur_state == FaceRes.FACE_TYPE.size() - 1:
-        await RenderingServer.frame_post_draw
-        Save.save_position_data(record_position_list)
-        Save.save_image(get_viewport().get_texture().get_image())
+        return
 
-        Events.emit_signal("request_change_level", "Passport")
-    else:
-        cur_state += 1
-        update_title_icon()
-        for mask_type_item: MaskStepBtn in mask_list.get_children():
-            mask_type_item.set_select(false)
-        create_decor_show()
-        var cur_button = mask_step[cur_state] as Button
-        cur_button.set_select(true)
+    cur_state += 1
+    update_title_icon()
+    for mask_type_item: MaskStepBtn in mask_list.get_children():
+        mask_type_item.set_select(false)
+    create_decor_show()
+    var cur_button = mask_step[cur_state] as Button
+    cur_button.set_select(true)
+    _update_action_buttons()
+
+
+func _on_take_photo_pressed() -> void:
+    await RenderingServer.frame_post_draw
+    Save.save_position_data(record_position_list)
+    Save.save_image(get_viewport().get_texture().get_image())
+
+    Events.emit_signal("request_change_level", "Passport")
+
+
+func _update_action_buttons() -> void:
+    var is_last: bool = cur_state == FaceRes.FACE_TYPE.size() - 1
+    confirm_btn.visible = not is_last
+    take_photo_btn.visible = is_last
 
 func update_title_icon():
     for child in title_icon.get_children():
