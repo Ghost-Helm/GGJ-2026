@@ -29,6 +29,7 @@ var record_position_list: PackedVector3Array
 @export var fall_speed: float
 var fall_speed_tmp: float
 @export var fall_delta_second: float
+@onready var dialog_text: Label = $People/Dialog/Text
 
 var _current_second: float
 
@@ -39,6 +40,7 @@ func _add_texture(face_res: FaceRes) -> void:
 
     current_fall_scene = fall_scene
     current_face_res_type = face_res.type
+    current_face_res = face_res
     fall_scene.position.y = initial_height
     is_move = true
 
@@ -47,6 +49,7 @@ func _add_texture(face_res: FaceRes) -> void:
 
 var current_fall_scene: FallMask
 var current_face_res_type: FaceRes.FACE_TYPE
+var current_face_res: FaceRes
 var is_move: bool = false
 var is_fall: bool = false
 var is_mask: bool = false
@@ -66,6 +69,8 @@ func _input(event: InputEvent) -> void:
             is_fall = false
             _current_second = fall_delta_second + 1
             record_position_list.append(Vector3(current_face_res_type, current_fall_scene.position.x, current_fall_scene.position.y))
+            if current_face_res != null:
+                dialog_text.text = current_face_res.dialog
             is_mask = false
         #get_viewport().set_input_as_handled()
 
