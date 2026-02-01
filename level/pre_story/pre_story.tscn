@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://b7e7ojomo20w4"]
 
 [ext_resource type="Script" uid="uid://dus70e6ubsii7" path="res://level/pre_story/pre_story.gd" id="1_8rirr"]
+[ext_resource type="Texture2D" uid="uid://d0fiyg1f7bhq" path="res://asset/pre_stroy_ui/bg.png" id="2_c7w4l"]
+[ext_resource type="Texture2D" uid="uid://dx86f0hebv4ui" path="res://asset/pre_stroy_ui/button.png" id="3_bm081"]
 
 [node name="PreStory" type="Control" unique_id=2018822623]
 layout_mode = 3
@@ -11,28 +13,52 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8rirr")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1938621950]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2032970278]
+layout_mode = 0
+offset_right = 1600.0
+offset_bottom = 1200.0
+texture = ExtResource("2_c7w4l")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1265821050]
+layout_mode = 1
+offset_right = 1600.0
+offset_bottom = 1200.0
+texture = ExtResource("3_bm081")
+
+[node name="MarginContainer" type="Control" parent="." unique_id=820531237]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
 
 [node name="StoryTest" type="Label" parent="MarginContainer" unique_id=1630041904]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -116.28
+offset_right = 224.0
+offset_bottom = -82.279785
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "一个外星人想要来地球玩老虎机"
 horizontal_alignment = 1
 
 [node name="Next" type="Button" parent="MarginContainer" unique_id=581201857]
-layout_mode = 2
+layout_mode = 0
+offset_left = 1100.0
+offset_top = 978.0
+offset_right = 1566.0
+offset_bottom = 1165.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
-text = "开始伪装"
+flat = true
 
 [connection signal="pressed" from="MarginContainer/Next" to="." method="_on_next_pressed"]
