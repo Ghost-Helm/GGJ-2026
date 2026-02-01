@@ -19,6 +19,7 @@ func _play_sound(sound_name: StringName) -> void:
     self.add_child(sound_player)
     sound_player.name = "Sound"
     sound_player.stream = _sound_res_map[sound_name]
+    sound_player.bus = "Sound"
     sound_player.play()
     await sound_player.finished
     sound_player.queue_free()
