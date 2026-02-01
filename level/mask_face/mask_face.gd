@@ -74,7 +74,9 @@ func _input(event: InputEvent) -> void:
                 2: sound_name = "Fall3"
                 3: sound_name = "Fall4"
             Events.emit_signal("request_play_sound", sound_name)
+            return
         #get_viewport().set_input_as_handled()
+
     if event.is_action_pressed("mask_face_accept"):
         if is_move == false && is_fall == true:
             Events.emit_signal("request_play_sound", "StickSound")
