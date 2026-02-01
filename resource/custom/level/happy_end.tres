@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelRes" format=3 uid="uid://bwy457ekupswq"]
+
+[ext_resource type="PackedScene" uid="uid://c0ibdxlgntg03" path="res://level/happy_end/happy_end.tscn" id="1_8oij1"]
+[ext_resource type="Script" uid="uid://cdgv7pmctqdj6" path="res://resource/custom/level/level_res.gd" id="1_qa30y"]
+
+[resource]
+script = ExtResource("1_qa30y")
+level_name = &"HappyEnd"
+level_scene = ExtResource("1_8oij1")
+metadata/_custom_type_script = "uid://cdgv7pmctqdj6"

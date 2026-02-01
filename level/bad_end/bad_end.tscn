@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b3lr3xkx5gqfv"]
+
+[ext_resource type="Script" uid="uid://dxnspmyy1835m" path="res://level/bad_end/bad_end.gd" id="1_4eoo7"]
+[ext_resource type="Texture2D" uid="uid://cavs12r7taijw" path="res://asset/end_bad_ui/shibai_background.png" id="1_k5nff"]
+[ext_resource type="Texture2D" uid="uid://cf8vubpacydl7" path="res://asset/end_bad_ui/shibai_1.png" id="3_uoald"]
+[ext_resource type="Texture2D" uid="uid://dvnyol6atv35b" path="res://asset/end_bad_ui/shibai_2.png" id="4_wlnmd"]
+[ext_resource type="Texture2D" uid="uid://ch4v3r24ai1ys" path="res://asset/end_bad_ui/shibai_3.png" id="5_ao80f"]
+
+[node name="BadEnd" type="Control" unique_id=1191835981]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4eoo7")
+
+[node name="Bg" type="TextureRect" parent="." unique_id=666743709]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -800.0
+offset_top = -600.0
+offset_right = 800.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_k5nff")
+
+[node name="1" type="TextureRect" parent="." unique_id=1536111768]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 28.0
+offset_right = 437.0
+offset_bottom = 207.0
+texture = ExtResource("3_uoald")
+
+[node name="2" type="TextureRect" parent="." unique_id=157003520]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 226.0
+offset_right = 1554.0
+offset_bottom = 1154.0
+texture = ExtResource("4_wlnmd")
+
+[node name="3" type="TextureRect" parent="." unique_id=663928192]
+layout_mode = 0
+offset_left = 1338.0
+offset_top = 191.0
+offset_right = 1586.0
+offset_bottom = 438.0
+texture = ExtResource("5_ao80f")

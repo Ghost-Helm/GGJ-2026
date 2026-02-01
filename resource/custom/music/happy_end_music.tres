@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MusicRes" format=3 uid="uid://chhqth6kgfe7v"]
+
+[ext_resource type="Script" uid="uid://b8e3l6kvgvq8n" path="res://resource/custom/music/music_res.gd" id="1_xrgd0"]
+[ext_resource type="AudioStream" uid="uid://b4brplp6j8gfe" path="res://asset/music/happy_end_bgm.mp3" id="2_m0nx4"]
+
+[resource]
+script = ExtResource("1_xrgd0")
+music_name = &"HappyEndMusic"
+stream = ExtResource("2_m0nx4")
+metadata/_custom_type_script = "uid://b8e3l6kvgvq8n"
