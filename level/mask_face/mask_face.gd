@@ -279,3 +279,14 @@ func update_title_icon():
 func _on_random_pressed() -> void:
     Events.emit_signal("request_play_sound", "RandomSound")
     create_decor_show()
+
+
+func _on_retry_pressed() -> void:
+    ## 删除上一个更改
+    var size = record_position_list.size()
+    if size > 0:
+        record_position_list.remove_at(size-1)
+        var face_list = face_item.get_children()
+        var re_item = face_list[face_list.size()-1]
+        re_item.queue_free()
+    

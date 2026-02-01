@@ -37,4 +37,13 @@ size_flags_vertical = 4
 icon = ExtResource("3_pxks5")
 flat = true
 
+[node name="About" type="Button" parent="." unique_id=2090514539]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 1103.0
+offset_right = 205.0
+offset_bottom = 1145.0
+text = "关于我们"
+
 [connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="About" to="." method="_on_about_pressed"]
