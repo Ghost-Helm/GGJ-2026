@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FaceRes" format=3 uid="uid://pwfpdy3p9twn"]
+[gd_resource type="Resource" script_class="FaceRes" format=3 uid="uid://pwfpdy3qatwn"]
 
 [ext_resource type="Texture2D" uid="uid://clkkqaiy5oyr1" path="res://asset/eye_left/eye_14_a.png" id="1_o0bm0"]
 [ext_resource type="Script" uid="uid://bif667anywsjj" path="res://resource/custom/face/face_res.gd" id="2_b53dj"]
