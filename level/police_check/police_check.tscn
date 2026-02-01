@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://djvl20yqq0dyc" path="res://asset/police_check_ui/dialog.png" id="7_g7bst"]
 [ext_resource type="Texture2D" uid="uid://dlcw28yn0p7o4" path="res://asset/police_check_ui/passport.png" id="10_wjxqw"]
 [ext_resource type="Texture2D" uid="uid://ctri6tf0ugfvd" path="res://asset/police_check_ui/hand.png" id="11_7rmy8"]
+[ext_resource type="Texture2D" uid="uid://qadyixigeq1w" path="res://asset/police_check_ui/ok.png" id="12_g7bst"]
+[ext_resource type="Texture2D" uid="uid://civxif20qqvul" path="res://asset/police_check_ui/wrong.png" id="13_yqy0k"]
 
 [node name="PoliceCheck" type="Control" unique_id=940163699]
 layout_mode = 3
@@ -284,5 +286,26 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("11_7rmy8")
+
+[node name="FaceCheck" type="Control" parent="." unique_id=707193998]
+anchors_preset = 0
+offset_left = 1354.0
+offset_top = 690.0
+offset_right = 1394.0
+offset_bottom = 730.0
+
+[node name="Ok" type="TextureRect" parent="FaceCheck" unique_id=442666091]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("12_g7bst")
+
+[node name="Wrong" type="TextureRect" parent="FaceCheck" unique_id=1829235525]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("13_yqy0k")
 
 [connection signal="pressed" from="Popup/VBoxContainer/Button" to="Popup" method="_play_sound"]

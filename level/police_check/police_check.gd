@@ -39,6 +39,12 @@ var dialog_durations: Array[float] = [
 
 var _dialog_index: int = -1
 var _dialog_timer: Timer
+var _type_timer: Timer
+var _type_line: String = ""
+var _type_pos: int = 0
+var _dialog_duration_pending: float = 0.0
+
+@export var type_char_interval: float = 0.05
 
 enum PoliceMood { Happy, Scare, Smile, Yell }
 
@@ -52,6 +58,11 @@ func _ready() -> void:
     _dialog_timer.one_shot = true
     add_child(_dialog_timer)
     _dialog_timer.timeout.connect(_on_dialog_timeout)
+
+    _type_timer = Timer.new()
+    _type_timer.one_shot = false
+    add_child(_type_timer)
+    _type_timer.timeout.connect(_on_type_tick)
     _advance_dialog()
 
     var player_face_data: PackedVector3Array = Save.get_position_data()
@@ -126,16 +137,29 @@ func _advance_dialog() -> void:
     _dialog_index += 1
     if _dialog_index >= dialog_lines.size():
         return
-    dialog_label.text = dialog_lines[_dialog_index]
+    _type_line = dialog_lines[_dialog_index]
+    _type_pos = 0
+    dialog_label.text = ""
+    _type_timer.start(type_char_interval)
+
     var duration: float = 2.0
     if _dialog_index < dialog_durations.size() && dialog_durations[_dialog_index] > 0.0:
         duration = dialog_durations[_dialog_index]
-    _dialog_timer.start(duration)
+    _dialog_duration_pending = duration
 
 
 func _on_dialog_timeout() -> void:
     _fire_dialog_action(_dialog_index)
     _advance_dialog()
+
+
+func _on_type_tick() -> void:
+    if _type_pos >= _type_line.length():
+        _type_timer.stop()
+        _dialog_timer.start(_dialog_duration_pending)
+        return
+    _type_pos += 1
+    dialog_label.text = _type_line.substr(0, _type_pos)
 
 
 func _fire_dialog_action(index: int) -> void:
@@ -160,6 +184,9 @@ func on_check_start() -> void:
     tween.tween_property(hand, "position", check_end_pos, 1)
     tween.tween_property(hand, "position", check_start_pos, 2)
     tween.tween_callback(func(): hand.visible = false)
+    
+    ##播放检查结果
+    
 
 
 func _play_passport_tween() -> void:
