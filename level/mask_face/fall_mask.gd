@@ -5,6 +5,5 @@ class_name FallMask
 @onready var eye_frame: TextureRect = $EyeFrame
 
 func setup(res:FaceRes):
-	texture_rect.texture = res.face_img
-	eye_frame.visible = res.type == FaceRes.FACE_TYPE.Eye
-	
+    texture_rect.texture = res.face_img
+    eye_frame.visible = res.type == FaceRes.FACE_TYPE.Eye
