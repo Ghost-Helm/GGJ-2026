@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://c0ibdxlgntg03"]
+
+[ext_resource type="Script" uid="uid://8lgfm2w80tnb" path="res://happy_end.gd" id="1_lw877"]
+[ext_resource type="Texture2D" uid="uid://cbc2r20ja6k1a" path="res://asset/end_happy_ui/jiesuan_background.png" id="2_qj6yw"]
+[ext_resource type="Texture2D" uid="uid://c4l3d60ewf6rh" path="res://asset/end_happy_ui/jiesuan_1.png" id="3_oa8lt"]
+[ext_resource type="Texture2D" uid="uid://do4me7l5tjpud" path="res://asset/end_happy_ui/jiesuan_2.png" id="4_el4a4"]
+[ext_resource type="Texture2D" uid="uid://c8khpklj72bd3" path="res://asset/end_happy_ui/jiesuan_3.png" id="5_ginqc"]
+[ext_resource type="Texture2D" uid="uid://x6kiw6tg1sv2" path="res://asset/end_happy_ui/jiesuan_4.png" id="6_vw1te"]
+[ext_resource type="Texture2D" uid="uid://ccfutjrob6ch0" path="res://asset/end_happy_ui/jiesuan_5.png" id="7_u8hkd"]
+[ext_resource type="Texture2D" uid="uid://c35g56igc006p" path="res://asset/end_happy_ui/jiesuan_6.png" id="8_uo7j8"]
+[ext_resource type="Texture2D" uid="uid://1ptmgfavwcx6" path="res://asset/end_happy_ui/jiesuan_7.png" id="9_xkbk3"]
+[ext_resource type="Texture2D" uid="uid://x7jdxp1buddt" path="res://asset/end_happy_ui/jiesuan_9.png" id="10_2l0dn"]
+[ext_resource type="Texture2D" uid="uid://i7lr11cuxk5t" path="res://asset/end_happy_ui/jiesuan_8.png" id="11_r6s3n"]
+[ext_resource type="Texture2D" uid="uid://bhi8enxk6d3ye" path="res://asset/end_happy_ui/jiesuan_10.png" id="12_oyg3j"]
+[ext_resource type="Texture2D" uid="uid://bke8vcslsjdby" path="res://asset/end_happy_ui/jiesuan_11.png" id="13_mqjm2"]
+[ext_resource type="Texture2D" uid="uid://cq8v1c1breays" path="res://asset/end_happy_ui/jiesuan_12.png" id="14_606jn"]
+[ext_resource type="Texture2D" uid="uid://bhkc3p3nsghd0" path="res://asset/end_happy_ui/jiesuan_13.png" id="15_wx7se"]
+
+[node name="HappyEnd" type="Control" unique_id=1116858088]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lw877")
+
+[node name="Bg" type="TextureRect" parent="." unique_id=195775191]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -800.0
+offset_top = -600.0
+offset_right = 800.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qj6yw")
+
+[node name="1" type="TextureRect" parent="." unique_id=112709601]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 25.0
+offset_right = 431.0
+offset_bottom = 204.0
+texture = ExtResource("3_oa8lt")
+
+[node name="2" type="TextureRect" parent="." unique_id=1315427226]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 223.0
+offset_right = 565.0
+offset_bottom = 1154.0
+texture = ExtResource("4_el4a4")
+
+[node name="3" type="TextureRect" parent="." unique_id=477594320]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 280.0
+offset_right = 437.0
+offset_bottom = 1045.0
+texture = ExtResource("5_ginqc")
+
+[node name="4" type="TextureRect" parent="." unique_id=327620152]
+layout_mode = 0
+offset_left = 651.0
+offset_top = 35.0
+offset_right = 1551.0
+offset_bottom = 486.0
+texture = ExtResource("6_vw1te")
+
+[node name="5" type="TextureRect" parent="." unique_id=1536930377]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 52.0
+offset_right = 1232.0
+offset_bottom = 476.0
+texture = ExtResource("7_u8hkd")
+
+[node name="6" type="TextureRect" parent="." unique_id=1169439745]
+layout_mode = 0
+offset_left = 650.0
+offset_top = 513.0
+offset_right = 1091.0
+offset_bottom = 766.0
+texture = ExtResource("8_uo7j8")
+
+[node name="7" type="TextureRect" parent="." unique_id=1877623582]
+layout_mode = 0
+offset_left = 635.0
+offset_top = 481.0
+offset_right = 877.0
+offset_bottom = 792.0
+texture = ExtResource("9_xkbk3")
+
+[node name="8" type="TextureRect" parent="." unique_id=489977066]
+layout_mode = 0
+offset_left = 1107.0
+offset_top = 509.0
+offset_right = 1549.0
+offset_bottom = 762.0
+texture = ExtResource("10_2l0dn")
+
+[node name="9" type="TextureRect" parent="." unique_id=151515170]
+layout_mode = 0
+offset_left = 1134.0
+offset_top = 478.00003
+offset_right = 1338.0
+offset_bottom = 723.0
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("11_r6s3n")
+
+[node name="10" type="TextureRect" parent="." unique_id=869255496]
+layout_mode = 0
+offset_left = 1132.0
+offset_top = 482.0
+offset_right = 1584.0
+offset_bottom = 757.0
+texture = ExtResource("12_oyg3j")
+
+[node name="11" type="TextureRect" parent="." unique_id=677676772]
+layout_mode = 0
+offset_left = 658.0
+offset_top = 792.0
+offset_right = 1548.0
+offset_bottom = 1145.0
+texture = ExtResource("13_mqjm2")
+
+[node name="12" type="TextureRect" parent="." unique_id=82277926]
+layout_mode = 0
+offset_left = 676.0
+offset_top = 856.0
+offset_right = 1257.0
+offset_bottom = 1125.0
+texture = ExtResource("14_606jn")
+
+[node name="13" type="TextureRect" parent="." unique_id=169619542]
+layout_mode = 0
+offset_left = 1273.0
+offset_top = 725.0
+offset_right = 1583.0
+offset_bottom = 1175.0
+texture = ExtResource("15_wx7se")
