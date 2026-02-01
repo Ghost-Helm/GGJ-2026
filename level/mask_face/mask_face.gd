@@ -226,11 +226,6 @@ func _ready() -> void:
     create_decor_show()
 
 
-#@onready var photo: ColorRect = $MarginContainer/HBoxContainer/People/Face/Photo
-#@onready var dialog: Control = $MarginContainer/HBoxContainer/People/Dialog
-#@onready var dialog: Control = $People/Dialog
-
-
 func _on_confirm_pressed() -> void:
     Events.emit_signal("request_play_sound", "NextFace")
     if cur_state == FaceRes.FACE_TYPE.size() - 1:

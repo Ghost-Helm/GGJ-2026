@@ -8,4 +8,5 @@ script = ExtResource("1_moc5a")
 face_name = &"Mouse4"
 face_img = ExtResource("1_3khst")
 type = 3
+dialog = "嘿嘿嘿。"
 metadata/_custom_type_script = "uid://bif667anywsjj"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FaceRes" format=3 uid="uid://kith04gud028"]
+[gd_resource type="Resource" script_class="FaceRes" format=3 uid="uid://yd63w22dj2m2"]
 
 [ext_resource type="Texture2D" uid="uid://dgrs7iopbhiyt" path="res://asset/eyebrow_left/eyebrow_18_b.png" id="1_o0bm0"]
 [ext_resource type="Script" uid="uid://bif667anywsjj" path="res://resource/custom/face/face_res.gd" id="2_b53dj"]
@@ -8,5 +8,6 @@ script = ExtResource("2_b53dj")
 face_name = &"Eyebrow18B"
 face_img = ExtResource("1_o0bm0")
 type = 1
-dialog = "EyebrowB"
+dialog = "唉，要顶着这么丑的毛在脸上。"
+emotion = 1
 metadata/_custom_type_script = "uid://bif667anywsjj"

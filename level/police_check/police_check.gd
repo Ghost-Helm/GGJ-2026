@@ -2,9 +2,69 @@ extends Control
 
 # 类型，坐标，距离
 @export var target_face_data: PackedVector4Array
+@onready var dialog_label: Label = $Dialog/Label
+@onready var passport_photo: TextureRect = $PassPort/Photo
+@onready var pass_port: Control = $PassPort
+@onready var hand: Control = $Hand
+@onready var police_happy: TextureRect = $Police/Happy
+@onready var police_scare: TextureRect = $Police/Scare
+@onready var police_smile: TextureRect = $Police/Smile
+@onready var police_yell: TextureRect = $Police/Yell
+
+## 所有的表情
+@onready var happy: TextureRect = $Police/Happy
+@onready var scare: TextureRect = $Police/Scare
+@onready var smile: TextureRect = $Police/Smile
+@onready var yell: TextureRect = $Police/Yell
+
+
+var dialog_lines: Array[String] = [
+    "欢迎来到澳门航空",
+    "请出示你的证件",
+    "让我核对你的信息"
+]
+var dialog_actions: Array[StringName] = [
+    StringName(),
+    &"on_dialog_finished",
+    &"on_check_start",
+]
+var dialog_durations: Array[float] = [
+    2.0,
+    2.0,
+    2.0
+]
+
+@export var check_start_pos: Vector2
+@export var check_end_pos: Vector2
+
+var _dialog_index: int = -1
+var _dialog_timer: Timer
+var _type_timer: Timer
+var _type_line: String = ""
+var _type_pos: int = 0
+var _dialog_duration_pending: float = 0.0
+
+@export var type_char_interval: float = 0.05
+
+enum PoliceMood { Happy, Scare, Smile, Yell }
 
 
 func _ready() -> void:
+    var image: Image = Save.get_image()
+    if image != null:
+        passport_photo.texture = ImageTexture.create_from_image(image)
+
+    _dialog_timer = Timer.new()
+    _dialog_timer.one_shot = true
+    add_child(_dialog_timer)
+    _dialog_timer.timeout.connect(_on_dialog_timeout)
+
+    _type_timer = Timer.new()
+    _type_timer.one_shot = false
+    add_child(_type_timer)
+    _type_timer.timeout.connect(_on_type_tick)
+    _advance_dialog()
+
     var player_face_data: PackedVector3Array = Save.get_position_data()
 
     var target_vector4_array: PackedVector4Array = target_face_data
@@ -72,3 +132,88 @@ func _ready() -> void:
                 is_all_valid = false
     
     print(is_all_valid)
+
+func _advance_dialog() -> void:
+    _dialog_index += 1
+    if _dialog_index >= dialog_lines.size():
+        return
+    _type_line = dialog_lines[_dialog_index]
+    _type_pos = 0
+    dialog_label.text = ""
+    _type_timer.start(type_char_interval)
+
+    var duration: float = 2.0
+    if _dialog_index < dialog_durations.size() && dialog_durations[_dialog_index] > 0.0:
+        duration = dialog_durations[_dialog_index]
+    _dialog_duration_pending = duration
+
+
+func _on_dialog_timeout() -> void:
+    _fire_dialog_action(_dialog_index)
+    _advance_dialog()
+
+
+func _on_type_tick() -> void:
+    if _type_pos >= _type_line.length():
+        _type_timer.stop()
+        _dialog_timer.start(_dialog_duration_pending)
+        return
+    _type_pos += 1
+    dialog_label.text = _type_line.substr(0, _type_pos)
+
+
+func _fire_dialog_action(index: int) -> void:
+    if index < dialog_actions.size():
+        var method: StringName = dialog_actions[index]
+        if method != StringName() && has_method(method):
+            call_deferred(method)
+
+
+func on_dialog_finished() -> void:
+    ##写一个动画，推入护照显示
+    pass_port.visible = true
+    _play_passport_tween()
+    
+func on_check_start() -> void:
+    hand.visible = true
+    hand.position = check_start_pos
+    
+    var tween := create_tween()
+    tween.set_trans(Tween.TRANS_SINE)
+    tween.set_ease(Tween.EASE_IN_OUT)
+    tween.tween_property(hand, "position", check_end_pos, 1)
+    tween.tween_property(hand, "position", check_start_pos, 2)
+    tween.tween_callback(func(): hand.visible = false)
+    
+    ##播放检查结果
+    
+
+
+func _play_passport_tween() -> void:
+    var base_scale: Vector2 = pass_port.scale
+    pass_port.pivot_offset = pass_port.size * 0.5
+    pass_port.scale = base_scale * 1.4
+    pass_port.modulate = Color(1, 1, 1, 0.0)
+
+    var tween := create_tween()
+    tween.set_trans(Tween.TRANS_BACK)
+    tween.set_ease(Tween.EASE_OUT)
+    tween.tween_property(pass_port, "scale", base_scale, 0.25)
+    tween.parallel().tween_property(pass_port, "modulate", Color(1, 1, 1, 1), 0.5)
+
+
+func set_police_mood(mood: PoliceMood) -> void:
+    police_happy.visible = false
+    police_scare.visible = false
+    police_smile.visible = false
+    police_yell.visible = false
+
+    match mood:
+        PoliceMood.Happy:
+            police_happy.visible = true
+        PoliceMood.Scare:
+            police_scare.visible = true
+        PoliceMood.Smile:
+            police_smile.visible = true
+        PoliceMood.Yell:
+            police_yell.visible = true
