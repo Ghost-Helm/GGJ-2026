@@ -18,8 +18,10 @@ func _on_sign_name_pressed() -> void:
     
 
 func _ready() -> void:
-    var image:Image = Save.get_image()
-    var texture_photo:Texture2D = ImageTexture.create_from_image(image)
+    var image: Image = Save.get_image()
+    if image == null:
+        return
+    var texture_photo: Texture2D = ImageTexture.create_from_image(image)
     photo.texture = texture_photo
     photo.scale = Vector2(0.2, 0.2)
     _sign_name_base_scale = sign_name_img.scale

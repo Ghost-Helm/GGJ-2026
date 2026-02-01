@@ -2,9 +2,45 @@ extends Control
 
 # 类型，坐标，距离
 @export var target_face_data: PackedVector4Array
+@onready var dialog_label: Label = $Dialog/Label
+@onready var passport_photo: TextureRect = $PassPort/Photo
+@onready var pass_port: Control = $PassPort
+@onready var hand: Control = $Hand
+
+var dialog_lines: Array[String] = [
+    "欢迎来到澳门航空",
+    "请出示你的证件",
+    "让我核对你的信息"
+]
+var dialog_actions: Array[StringName] = [
+    StringName(),
+    &"on_dialog_finished",
+    &"on_check_start",
+]
+var dialog_durations: Array[float] = [
+    2.0,
+    2.0,
+    2.0
+]
+
+@export var check_start_pos: Vector2
+@export var check_end_pos: Vector2
+
+var _dialog_index: int = -1
+var _dialog_timer: Timer
 
 
 func _ready() -> void:
+    var image: Image = Save.get_image()
+    if image != null:
+        passport_photo.texture = ImageTexture.create_from_image(image)
+
+    _dialog_timer = Timer.new()
+    _dialog_timer.one_shot = true
+    add_child(_dialog_timer)
+    _dialog_timer.timeout.connect(_on_dialog_timeout)
+    _advance_dialog()
+
     var player_face_data: PackedVector3Array = Save.get_position_data()
 
     var target_vector4_array: PackedVector4Array = target_face_data
@@ -72,3 +108,55 @@ func _ready() -> void:
                 is_all_valid = false
     
     print(is_all_valid)
+
+func _advance_dialog() -> void:
+    _dialog_index += 1
+    if _dialog_index >= dialog_lines.size():
+        return
+    dialog_label.text = dialog_lines[_dialog_index]
+    var duration: float = 2.0
+    if _dialog_index < dialog_durations.size() && dialog_durations[_dialog_index] > 0.0:
+        duration = dialog_durations[_dialog_index]
+    _dialog_timer.start(duration)
+
+
+func _on_dialog_timeout() -> void:
+    _fire_dialog_action(_dialog_index)
+    _advance_dialog()
+
+
+func _fire_dialog_action(index: int) -> void:
+    if index < dialog_actions.size():
+        var method: StringName = dialog_actions[index]
+        if method != StringName() && has_method(method):
+            call_deferred(method)
+
+
+func on_dialog_finished() -> void:
+    ##写一个动画，推入护照显示
+    pass_port.visible = true
+    _play_passport_tween()
+    
+func on_check_start() -> void:
+    hand.visible = true
+    hand.position = check_start_pos
+    
+    var tween := create_tween()
+    tween.set_trans(Tween.TRANS_SINE)
+    tween.set_ease(Tween.EASE_IN_OUT)
+    tween.tween_property(hand, "position", check_end_pos, 1)
+    tween.tween_property(hand, "position", check_start_pos, 2)
+    tween.tween_callback(func(): hand.visible = false)
+
+
+func _play_passport_tween() -> void:
+    var base_scale: Vector2 = pass_port.scale
+    pass_port.pivot_offset = pass_port.size * 0.5
+    pass_port.scale = base_scale * 1.4
+    pass_port.modulate = Color(1, 1, 1, 0.0)
+
+    var tween := create_tween()
+    tween.set_trans(Tween.TRANS_BACK)
+    tween.set_ease(Tween.EASE_OUT)
+    tween.tween_property(pass_port, "scale", base_scale, 0.25)
+    tween.parallel().tween_property(pass_port, "modulate", Color(1, 1, 1, 1), 0.5)
