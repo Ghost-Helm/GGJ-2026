@@ -7,5 +7,6 @@
 script = ExtResource("2_wfvvt")
 face_name = &"Eye25B"
 face_img = ExtResource("1_08hvy")
-dialog = "EyeB"
+dialog = "你确定是这个星球的生物用的吗？"
+emotion = 1
 metadata/_custom_type_script = "uid://bif667anywsjj"
