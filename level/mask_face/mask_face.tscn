@@ -165,6 +165,7 @@ texture = ExtResource("18_h522x")
 texture = ExtResource("19_bwv2a")
 
 [node name="MaskOtherBtn" parent="VBoxContainer/MaskStep/List" unique_id=2140301863 instance=ExtResource("1_jgidl")]
+visible = false
 layout_mode = 2
 
 [node name="Normal" parent="VBoxContainer/MaskStep/List/MaskOtherBtn" index="1" unique_id=321599796]
