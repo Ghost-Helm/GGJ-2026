@@ -8,5 +8,6 @@ script = ExtResource("2_cuqek")
 face_name = &"Mouse10"
 face_img = ExtResource("1_naljl")
 type = 3
-dialog = "MouseA"
+dialog = "哪部分是嘴唇？"
+emotion = 2
 metadata/_custom_type_script = "uid://bif667anywsjj"

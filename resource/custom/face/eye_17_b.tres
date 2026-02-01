@@ -7,5 +7,5 @@
 script = ExtResource("2_wfvvt")
 face_name = &"Eye17B"
 face_img = ExtResource("1_08hvy")
-dialog = "EyeB"
+dialog = "很闪耀，符合我的个性。"
 metadata/_custom_type_script = "uid://bif667anywsjj"

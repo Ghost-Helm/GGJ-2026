@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FaceRes" format=3 uid="uid://hmduuves35xe"]
+[gd_resource type="Resource" script_class="FaceRes" format=3 uid="uid://kh6m6wxmiped"]
 
 [ext_resource type="Texture2D" uid="uid://bosyquo3d6kyg" path="res://asset/eyebrow_left/eyebrow_14_b.png" id="1_o0bm0"]
 [ext_resource type="Script" uid="uid://bif667anywsjj" path="res://resource/custom/face/face_res.gd" id="2_b53dj"]
@@ -8,5 +8,6 @@ script = ExtResource("2_b53dj")
 face_name = &"Eyebrow14B"
 face_img = ExtResource("1_o0bm0")
 type = 1
-dialog = "EyebrowB"
+dialog = "还算可以。"
+emotion = 2
 metadata/_custom_type_script = "uid://bif667anywsjj"

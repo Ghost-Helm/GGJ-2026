@@ -8,4 +8,6 @@ script = ExtResource("1_tgum1")
 face_name = &"Mouse5"
 face_img = ExtResource("1_h0e6r")
 type = 3
+dialog = "好像嘴边有一些奇妙的图腾，有什么含义吗？"
+emotion = 2
 metadata/_custom_type_script = "uid://bif667anywsjj"

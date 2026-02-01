@@ -7,5 +7,5 @@
 script = ExtResource("2_wfvvt")
 face_name = &"Eye8B"
 face_img = ExtResource("1_08hvy")
-dialog = "EyeB"
+dialog = "光学感应部分很大！"
 metadata/_custom_type_script = "uid://bif667anywsjj"

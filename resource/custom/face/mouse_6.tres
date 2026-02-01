@@ -8,4 +8,6 @@ script = ExtResource("1_dsakv")
 face_name = &"Mouse6"
 face_img = ExtResource("1_q8k1j")
 type = 3
+dialog = "好黄的牙，在那个星球似乎是不健康的象征。"
+emotion = 1
 metadata/_custom_type_script = "uid://bif667anywsjj"
